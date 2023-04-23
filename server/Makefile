@@ -1,4 +1,7 @@
-.PHONY: frog_dev frog_build frog_test
+.PHONY: codegen dev build test
+
+codegen:
+	@cd packages/models; dart run build_runner build --delete-conflicting-outputs
 
 dev:
 	dart_frog dev
