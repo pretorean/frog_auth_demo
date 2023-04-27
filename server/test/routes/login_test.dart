@@ -24,8 +24,8 @@ void main() {
         when(() => request.method).thenReturn(HttpMethod.get);
       });
 
-      test('THEN return methodNotAllowed status', () {
-        final response = route.onRequest(context);
+      test('THEN return methodNotAllowed status', () async {
+        final response = await route.onRequest(context);
         expect(response.statusCode, equals(HttpStatus.methodNotAllowed));
       });
     });

@@ -2,8 +2,17 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'register_request_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class RegisterRequestModel {
+  final String userName;
+  final String email;
+  final String? phone;
+  final String? firstName;
+  final String? middleName;
+  final String? lastName;
+  final DateTime? dateOfBirth;
+  final String? address;
+
   RegisterRequestModel({
     required this.userName,
     required this.email,
@@ -16,15 +25,4 @@ class RegisterRequestModel {
   });
 
   factory RegisterRequestModel.fromJson(Map<String, dynamic> json) => _$RegisterRequestModelFromJson(json);
-
-  final String userName;
-  final String email;
-  final String? phone;
-  final String? firstName;
-  final String? middleName;
-  final String? lastName;
-  final DateTime? dateOfBirth;
-  final String? address;
-
-  Map<String, dynamic> toJson() => _$RegisterRequestModelToJson(this);
 }

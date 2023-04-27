@@ -18,7 +18,10 @@ Future<Response> _post(RequestContext context) async {
   final request = RegisterRequestModel.fromJson(body);
 
   final authService = context.read<AuthService>();
+  final response = await authService.register(request);
 
-  await authService.register(request);
-  return Response(statusCode: HttpStatus.noContent);
+  return response.fold(
+    (l) => Response.json(statusCode: HttpStatus.internalServerError, body: l.toJson()),
+    (r) => Response(statusCode: HttpStatus.noContent),
+  );
 }

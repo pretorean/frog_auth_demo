@@ -20,16 +20,3 @@ RegisterRequestModel _$RegisterRequestModelFromJson(
           : DateTime.parse(json['dateOfBirth'] as String),
       address: json['address'] as String?,
     );
-
-Map<String, dynamic> _$RegisterRequestModelToJson(
-        RegisterRequestModel instance) =>
-    <String, dynamic>{
-      'userName': instance.userName,
-      'email': instance.email,
-      'phone': instance.phone,
-      'firstName': instance.firstName,
-      'middleName': instance.middleName,
-      'lastName': instance.lastName,
-      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
-      'address': instance.address,
-    };
