@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
 import 'package:frog_auth_demo/auth_service.dart';
+import 'package:frog_auth_demo/response_util.dart';
 import 'package:models/models.dart';
 
 Future<Response> onRequest(RequestContext context) async {
@@ -21,7 +22,7 @@ Future<Response> _post(RequestContext context) async {
   final response = await authService.register(request);
 
   return response.fold(
-    (l) => Response.json(statusCode: HttpStatus.internalServerError, body: l.toJson()),
-    (r) => Response(statusCode: HttpStatus.noContent),
+    (l) => serverErrorResponse(l.toJson()),
+    (r) => noContentResponse(),
   );
 }

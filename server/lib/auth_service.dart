@@ -12,13 +12,19 @@ class AuthService {
   /// Login
   /// first authorization step for old users
   /// or re-request a one-time password
-  Future<void> login(LoginRequestModel request) async {}
+  Future<Either<FailureModel, void>> login(LoginRequestModel request) async {
+    return right(null);
+  }
 
   /// second authorization stage
   /// receiving a token in exchange for a one-time password (otp)
-  Future<void> confirm(ConfirmRequestModel request) async {}
+  Future<Either<FailureModel, TokenResponseModel>> confirm(ConfirmRequestModel request) async {
+    return right(TokenResponseModel(accessToken: '', refreshToken: ''));
+  }
 
   /// refresh token
   /// get a new token in exchange for a refresh token
-  Future<void> refresh(RefreshRequestModel request) async {}
+  Future<Either<FailureModel, TokenResponseModel>> refresh(RefreshRequestModel request) async {
+    return right(TokenResponseModel(accessToken: '', refreshToken: ''));
+  }
 }
