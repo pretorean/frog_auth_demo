@@ -8,6 +8,6 @@ part of 'confirm_request_model.dart';
 
 ConfirmRequestModel _$ConfirmRequestModelFromJson(Map<String, dynamic> json) =>
     ConfirmRequestModel(
-      email: json['email'] as String,
+      phone: json['phone'] as String,
       otpCode: json['otpCode'] as String,
     );

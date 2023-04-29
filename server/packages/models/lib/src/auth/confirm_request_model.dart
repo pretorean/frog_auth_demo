@@ -4,11 +4,11 @@ part 'confirm_request_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class ConfirmRequestModel {
-  final String email;
+  final String phone;
   final String otpCode;
 
   ConfirmRequestModel({
-    required this.email,
+    required this.phone,
     required this.otpCode,
   });
 
