@@ -1,15 +1,14 @@
 import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
+import 'package:frog_auth_demo/auth_database_client.dart';
 
-Future<void> init(InternetAddress ip, int port) async {
-  // Any code initialized within this method will only run on server start, any hot reloads
-  // afterwards will not trigger this method until a hot restart.
+final AuthDatabaseClient _authDatabaseClient = AuthDatabaseClient();
+
+Future<HttpServer> run(Handler handler, InternetAddress ip, int port) async {
+  return serve(handler.use(databaseProvider()).use(requestLogger()), ip, port);
 }
 
-Future<HttpServer> run(Handler handler, InternetAddress ip, int port) {
-  // 1. Execute any custom code prior to starting the server...
-  // 2. Use the provided `handler`, `ip`, and `port` to create a custom `HttpServer`.
-  // Or use the Dart Frog serve method to do that for you.
-  return serve(handler, ip, port);
+Middleware databaseProvider() {
+  return provider<AuthDatabaseClient>((_) => _authDatabaseClient);
 }

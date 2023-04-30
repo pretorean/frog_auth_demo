@@ -7,11 +7,16 @@ environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
+  auth_storage:
+    path: ../server/packages/auth_storage/
+
   dart_frog: ^0.3.6
   dartz: ^0.10.1
 
   models:
     path: ../server/packages/models/
+
+  orm: ^3.3.0
 
 dev_dependencies:
   mocktail: ^0.3.0
