@@ -16,26 +16,26 @@ UserWhereInput _$UserWhereInputFromJson(Map<String, dynamic> json) =>
           ?.map((e) => UserWhereInput.fromJson(e as Map<String, dynamic>)),
       id: json['id'] == null
           ? null
-          : StringFilter.fromJson(json['id'] as Map<String, dynamic>),
+          : IntFilter.fromJson(json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
           : StringFilter.fromJson(json['name'] as Map<String, dynamic>),
       phone: json['phone'] == null
           ? null
           : StringFilter.fromJson(json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
-          : BoolFilter.fromJson(json['isVerifed'] as Map<String, dynamic>),
+          : BoolFilter.fromJson(json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFilter.fromJson(json['createdAt'] as Map<String, dynamic>),
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTimeFilter.fromJson(json['updatedAt'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionListRelationFilter.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutListRelationFilter.fromJson(
@@ -57,10 +57,10 @@ Map<String, dynamic> _$UserWhereInputToJson(UserWhereInput instance) {
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
@@ -71,13 +71,13 @@ UserOrderByWithRelationInput _$UserOrderByWithRelationInputFromJson(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
       phone: $enumDecodeNullable(_$SortOrderEnumMap, json['phone']),
-      isVerifed: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerifed']),
+      isVerified: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerified']),
       createdAt: $enumDecodeNullable(_$SortOrderEnumMap, json['createdAt']),
       updatedAt: $enumDecodeNullable(_$SortOrderEnumMap, json['updatedAt']),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionOrderByRelationAggregateInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutOrderByRelationAggregateInput.fromJson(
@@ -97,10 +97,10 @@ Map<String, dynamic> _$UserOrderByWithRelationInputToJson(
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
   writeNotNull('phone', _$SortOrderEnumMap[instance.phone]);
-  writeNotNull('isVerifed', _$SortOrderEnumMap[instance.isVerifed]);
+  writeNotNull('isVerified', _$SortOrderEnumMap[instance.isVerified]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('updatedAt', _$SortOrderEnumMap[instance.updatedAt]);
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
@@ -113,7 +113,7 @@ const _$SortOrderEnumMap = {
 UserWhereUniqueInput _$UserWhereUniqueInputFromJson(
         Map<String, dynamic> json) =>
     UserWhereUniqueInput(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       phone: json['phone'] as String?,
     );
 
@@ -138,13 +138,17 @@ UserOrderByWithAggregationInput _$UserOrderByWithAggregationInputFromJson(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
       phone: $enumDecodeNullable(_$SortOrderEnumMap, json['phone']),
-      isVerifed: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerifed']),
+      isVerified: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerified']),
       createdAt: $enumDecodeNullable(_$SortOrderEnumMap, json['createdAt']),
       updatedAt: $enumDecodeNullable(_$SortOrderEnumMap, json['updatedAt']),
       $count: json['_count'] == null
           ? null
           : UserCountOrderByAggregateInput.fromJson(
               json['_count'] as Map<String, dynamic>),
+      $avg: json['_avg'] == null
+          ? null
+          : UserAvgOrderByAggregateInput.fromJson(
+              json['_avg'] as Map<String, dynamic>),
       $max: json['_max'] == null
           ? null
           : UserMaxOrderByAggregateInput.fromJson(
@@ -153,6 +157,10 @@ UserOrderByWithAggregationInput _$UserOrderByWithAggregationInputFromJson(
           ? null
           : UserMinOrderByAggregateInput.fromJson(
               json['_min'] as Map<String, dynamic>),
+      $sum: json['_sum'] == null
+          ? null
+          : UserSumOrderByAggregateInput.fromJson(
+              json['_sum'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserOrderByWithAggregationInputToJson(
@@ -168,12 +176,14 @@ Map<String, dynamic> _$UserOrderByWithAggregationInputToJson(
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
   writeNotNull('phone', _$SortOrderEnumMap[instance.phone]);
-  writeNotNull('isVerifed', _$SortOrderEnumMap[instance.isVerifed]);
+  writeNotNull('isVerified', _$SortOrderEnumMap[instance.isVerified]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('updatedAt', _$SortOrderEnumMap[instance.updatedAt]);
   writeNotNull('_count', instance.$count?.toJson());
+  writeNotNull('_avg', instance.$avg?.toJson());
   writeNotNull('_max', instance.$max?.toJson());
   writeNotNull('_min', instance.$min?.toJson());
+  writeNotNull('_sum', instance.$sum?.toJson());
   return val;
 }
 
@@ -191,7 +201,7 @@ UserScalarWhereWithAggregatesInput _$UserScalarWhereWithAggregatesInputFromJson(
               e as Map<String, dynamic>)),
       id: json['id'] == null
           ? null
-          : StringWithAggregatesFilter.fromJson(
+          : IntWithAggregatesFilter.fromJson(
               json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
@@ -201,10 +211,10 @@ UserScalarWhereWithAggregatesInput _$UserScalarWhereWithAggregatesInputFromJson(
           ? null
           : StringWithAggregatesFilter.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolWithAggregatesFilter.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeWithAggregatesFilter.fromJson(
@@ -231,7 +241,7 @@ Map<String, dynamic> _$UserScalarWhereWithAggregatesInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
   return val;
@@ -257,7 +267,7 @@ CodeSendOutWhereInput _$CodeSendOutWhereInputFromJson(
           : StringFilter.fromJson(json['code'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFilter.fromJson(json['userId'] as Map<String, dynamic>),
+          : IntFilter.fromJson(json['userId'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFilter.fromJson(json['createdAt'] as Map<String, dynamic>),
@@ -422,7 +432,7 @@ CodeSendOutScalarWhereWithAggregatesInput
                   json['code'] as Map<String, dynamic>),
           userId: json['userId'] == null
               ? null
-              : StringWithAggregatesFilter.fromJson(
+              : IntWithAggregatesFilter.fromJson(
                   json['userId'] as Map<String, dynamic>),
           createdAt: json['createdAt'] == null
               ? null
@@ -464,7 +474,7 @@ SessionWhereInput _$SessionWhereInputFromJson(Map<String, dynamic> json) =>
           : StringFilter.fromJson(json['id'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFilter.fromJson(json['userId'] as Map<String, dynamic>),
+          : IntFilter.fromJson(json['userId'] as Map<String, dynamic>),
       workspaceId: json['workspaceId'] == null
           ? null
           : StringNullableFilter.fromJson(
@@ -569,6 +579,10 @@ SessionOrderByWithAggregationInput _$SessionOrderByWithAggregationInputFromJson(
           ? null
           : SessionCountOrderByAggregateInput.fromJson(
               json['_count'] as Map<String, dynamic>),
+      $avg: json['_avg'] == null
+          ? null
+          : SessionAvgOrderByAggregateInput.fromJson(
+              json['_avg'] as Map<String, dynamic>),
       $max: json['_max'] == null
           ? null
           : SessionMaxOrderByAggregateInput.fromJson(
@@ -577,6 +591,10 @@ SessionOrderByWithAggregationInput _$SessionOrderByWithAggregationInputFromJson(
           ? null
           : SessionMinOrderByAggregateInput.fromJson(
               json['_min'] as Map<String, dynamic>),
+      $sum: json['_sum'] == null
+          ? null
+          : SessionSumOrderByAggregateInput.fromJson(
+              json['_sum'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SessionOrderByWithAggregationInputToJson(
@@ -594,8 +612,10 @@ Map<String, dynamic> _$SessionOrderByWithAggregationInputToJson(
   writeNotNull('workspaceId', _$SortOrderEnumMap[instance.workspaceId]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('_count', instance.$count?.toJson());
+  writeNotNull('_avg', instance.$avg?.toJson());
   writeNotNull('_max', instance.$max?.toJson());
   writeNotNull('_min', instance.$min?.toJson());
+  writeNotNull('_sum', instance.$sum?.toJson());
   return val;
 }
 
@@ -618,7 +638,7 @@ SessionScalarWhereWithAggregatesInput
                   json['id'] as Map<String, dynamic>),
           userId: json['userId'] == null
               ? null
-              : StringWithAggregatesFilter.fromJson(
+              : IntWithAggregatesFilter.fromJson(
                   json['userId'] as Map<String, dynamic>),
           workspaceId: json['workspaceId'] == null
               ? null
@@ -664,10 +684,10 @@ WorkspaceWhereInput _$WorkspaceWhereInputFromJson(Map<String, dynamic> json) =>
       name: json['name'] == null
           ? null
           : StringFilter.fromJson(json['name'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionListRelationFilter.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceWhereInputToJson(WorkspaceWhereInput instance) {
@@ -684,7 +704,7 @@ Map<String, dynamic> _$WorkspaceWhereInputToJson(WorkspaceWhereInput instance) {
   writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -693,10 +713,10 @@ WorkspaceOrderByWithRelationInput _$WorkspaceOrderByWithRelationInputFromJson(
     WorkspaceOrderByWithRelationInput(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionOrderByRelationAggregateInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceOrderByWithRelationInputToJson(
@@ -711,7 +731,7 @@ Map<String, dynamic> _$WorkspaceOrderByWithRelationInputToJson(
 
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -815,18 +835,17 @@ Map<String, dynamic> _$WorkspaceScalarWhereWithAggregatesInputToJson(
 
 UserCreateInput _$UserCreateInputFromJson(Map<String, dynamic> json) =>
     UserCreateInput(
-      id: json['id'] as String?,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      isVerifed: json['isVerifed'] as bool?,
+      isVerified: json['isVerified'] as bool?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<String, DateTime>(
           json['updatedAt'], const DateTimeJsonConverter().fromJson),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionCreateNestedManyWithoutUserInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutCreateNestedManyWithoutUserInput.fromJson(
@@ -834,7 +853,10 @@ UserCreateInput _$UserCreateInputFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$UserCreateInputToJson(UserCreateInput instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'phone': instance.phone,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -842,10 +864,7 @@ Map<String, dynamic> _$UserCreateInputToJson(UserCreateInput instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  val['name'] = instance.name;
-  val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -854,7 +873,7 @@ Map<String, dynamic> _$UserCreateInputToJson(UserCreateInput instance) {
       'updatedAt',
       _$JsonConverterToJson<String, DateTime>(
           instance.updatedAt, const DateTimeJsonConverter().toJson));
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
@@ -874,18 +893,18 @@ Json? _$JsonConverterToJson<Json, Value>(
 UserUncheckedCreateInput _$UserUncheckedCreateInputFromJson(
         Map<String, dynamic> json) =>
     UserUncheckedCreateInput(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      isVerifed: json['isVerifed'] as bool?,
+      isVerified: json['isVerified'] as bool?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<String, DateTime>(
           json['updatedAt'], const DateTimeJsonConverter().fromJson),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUncheckedCreateNestedManyWithoutUserInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutUncheckedCreateNestedManyWithoutUserInput.fromJson(
@@ -905,7 +924,7 @@ Map<String, dynamic> _$UserUncheckedCreateInputToJson(
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
   val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -914,17 +933,13 @@ Map<String, dynamic> _$UserUncheckedCreateInputToJson(
       'updatedAt',
       _$JsonConverterToJson<String, DateTime>(
           instance.updatedAt, const DateTimeJsonConverter().toJson));
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
 
 UserUpdateInput _$UserUpdateInputFromJson(Map<String, dynamic> json) =>
     UserUpdateInput(
-      id: json['id'] == null
-          ? null
-          : StringFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -933,10 +948,10 @@ UserUpdateInput _$UserUpdateInputFromJson(Map<String, dynamic> json) =>
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -945,10 +960,10 @@ UserUpdateInput _$UserUpdateInputFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
               json['updatedAt'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUpdateManyWithoutUserNestedInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutUpdateManyWithoutUserNestedInput.fromJson(
@@ -964,13 +979,12 @@ Map<String, dynamic> _$UserUpdateInputToJson(UserUpdateInput instance) {
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
@@ -980,7 +994,7 @@ UserUncheckedUpdateInput _$UserUncheckedUpdateInputFromJson(
     UserUncheckedUpdateInput(
       id: json['id'] == null
           ? null
-          : StringFieldUpdateOperationsInput.fromJson(
+          : IntFieldUpdateOperationsInput.fromJson(
               json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
@@ -990,10 +1004,10 @@ UserUncheckedUpdateInput _$UserUncheckedUpdateInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -1002,10 +1016,10 @@ UserUncheckedUpdateInput _$UserUncheckedUpdateInputFromJson(
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
               json['updatedAt'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUncheckedUpdateManyWithoutUserNestedInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
       codeSendOut: json['codeSendOut'] == null
           ? null
           : CodeSendOutUncheckedUpdateManyWithoutUserNestedInput.fromJson(
@@ -1025,10 +1039,10 @@ Map<String, dynamic> _$UserUncheckedUpdateInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
@@ -1036,10 +1050,6 @@ Map<String, dynamic> _$UserUncheckedUpdateInputToJson(
 UserUpdateManyMutationInput _$UserUpdateManyMutationInputFromJson(
         Map<String, dynamic> json) =>
     UserUpdateManyMutationInput(
-      id: json['id'] == null
-          ? null
-          : StringFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -1048,10 +1058,10 @@ UserUpdateManyMutationInput _$UserUpdateManyMutationInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -1072,10 +1082,9 @@ Map<String, dynamic> _$UserUpdateManyMutationInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
   return val;
@@ -1086,7 +1095,7 @@ UserUncheckedUpdateManyInput _$UserUncheckedUpdateManyInputFromJson(
     UserUncheckedUpdateManyInput(
       id: json['id'] == null
           ? null
-          : StringFieldUpdateOperationsInput.fromJson(
+          : IntFieldUpdateOperationsInput.fromJson(
               json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
@@ -1096,10 +1105,10 @@ UserUncheckedUpdateManyInput _$UserUncheckedUpdateManyInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -1123,7 +1132,7 @@ Map<String, dynamic> _$UserUncheckedUpdateManyInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
   return val;
@@ -1167,7 +1176,7 @@ CodeSendOutUncheckedCreateInput _$CodeSendOutUncheckedCreateInputFromJson(
       id: json['id'] as int?,
       phone: json['phone'] as String,
       code: json['code'] as String,
-      userId: json['userId'] as String,
+      userId: json['userId'] as int,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
     );
@@ -1248,7 +1257,7 @@ CodeSendOutUncheckedUpdateInput _$CodeSendOutUncheckedUpdateInputFromJson(
               json['code'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFieldUpdateOperationsInput.fromJson(
+          : IntFieldUpdateOperationsInput.fromJson(
               json['userId'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
@@ -1324,7 +1333,7 @@ CodeSendOutUncheckedUpdateManyInput
                   json['code'] as Map<String, dynamic>),
           userId: json['userId'] == null
               ? null
-              : StringFieldUpdateOperationsInput.fromJson(
+              : IntFieldUpdateOperationsInput.fromJson(
                   json['userId'] as Map<String, dynamic>),
           createdAt: json['createdAt'] == null
               ? null
@@ -1355,11 +1364,11 @@ SessionCreateInput _$SessionCreateInputFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
-      user: UserCreateNestedOneWithoutSesionInput.fromJson(
+      user: UserCreateNestedOneWithoutSessionInput.fromJson(
           json['user'] as Map<String, dynamic>),
       workspace: json['workspace'] == null
           ? null
-          : WorkspaceCreateNestedOneWithoutSesionInput.fromJson(
+          : WorkspaceCreateNestedOneWithoutSessionInput.fromJson(
               json['workspace'] as Map<String, dynamic>),
     );
 
@@ -1386,7 +1395,7 @@ SessionUncheckedCreateInput _$SessionUncheckedCreateInputFromJson(
         Map<String, dynamic> json) =>
     SessionUncheckedCreateInput(
       id: json['id'] as String?,
-      userId: json['userId'] as String,
+      userId: json['userId'] as int,
       workspaceId: json['workspaceId'] as String?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
@@ -1424,11 +1433,11 @@ SessionUpdateInput _$SessionUpdateInputFromJson(Map<String, dynamic> json) =>
               json['createdAt'] as Map<String, dynamic>),
       user: json['user'] == null
           ? null
-          : UserUpdateOneRequiredWithoutSesionNestedInput.fromJson(
+          : UserUpdateOneRequiredWithoutSessionNestedInput.fromJson(
               json['user'] as Map<String, dynamic>),
       workspace: json['workspace'] == null
           ? null
-          : WorkspaceUpdateOneWithoutSesionNestedInput.fromJson(
+          : WorkspaceUpdateOneWithoutSessionNestedInput.fromJson(
               json['workspace'] as Map<String, dynamic>),
     );
 
@@ -1457,7 +1466,7 @@ SessionUncheckedUpdateInput _$SessionUncheckedUpdateInputFromJson(
               json['id'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFieldUpdateOperationsInput.fromJson(
+          : IntFieldUpdateOperationsInput.fromJson(
               json['userId'] as Map<String, dynamic>),
       workspaceId: json['workspaceId'] == null
           ? null
@@ -1523,7 +1532,7 @@ SessionUncheckedUpdateManyInput _$SessionUncheckedUpdateManyInputFromJson(
               json['id'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFieldUpdateOperationsInput.fromJson(
+          : IntFieldUpdateOperationsInput.fromJson(
               json['userId'] as Map<String, dynamic>),
       workspaceId: json['workspaceId'] == null
           ? null
@@ -1557,10 +1566,10 @@ WorkspaceCreateInput _$WorkspaceCreateInputFromJson(
     WorkspaceCreateInput(
       id: json['id'] as String?,
       name: json['name'] as String,
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionCreateNestedManyWithoutWorkspaceInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceCreateInputToJson(
@@ -1575,7 +1584,7 @@ Map<String, dynamic> _$WorkspaceCreateInputToJson(
 
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -1584,10 +1593,10 @@ WorkspaceUncheckedCreateInput _$WorkspaceUncheckedCreateInputFromJson(
     WorkspaceUncheckedCreateInput(
       id: json['id'] as String?,
       name: json['name'] as String,
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUncheckedCreateNestedManyWithoutWorkspaceInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceUncheckedCreateInputToJson(
@@ -1602,7 +1611,7 @@ Map<String, dynamic> _$WorkspaceUncheckedCreateInputToJson(
 
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -1617,10 +1626,10 @@ WorkspaceUpdateInput _$WorkspaceUpdateInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['name'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUpdateManyWithoutWorkspaceNestedInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceUpdateInputToJson(
@@ -1635,7 +1644,7 @@ Map<String, dynamic> _$WorkspaceUpdateInputToJson(
 
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -1650,10 +1659,10 @@ WorkspaceUncheckedUpdateInput _$WorkspaceUncheckedUpdateInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['name'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUncheckedUpdateManyWithoutWorkspaceNestedInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WorkspaceUncheckedUpdateInputToJson(
@@ -1668,7 +1677,7 @@ Map<String, dynamic> _$WorkspaceUncheckedUpdateInputToJson(
 
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -1725,6 +1734,39 @@ Map<String, dynamic> _$WorkspaceUncheckedUpdateManyInputToJson(
 
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
+  return val;
+}
+
+IntFilter _$IntFilterFromJson(Map<String, dynamic> json) => IntFilter(
+      equals: json['equals'] as int?,
+      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
+      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
+      lt: json['lt'] as int?,
+      lte: json['lte'] as int?,
+      gt: json['gt'] as int?,
+      gte: json['gte'] as int?,
+      not: json['not'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$IntFilterToJson(IntFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
   return val;
 }
 
@@ -1956,7 +1998,7 @@ UserCountOrderByAggregateInput _$UserCountOrderByAggregateInputFromJson(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
       phone: $enumDecodeNullable(_$SortOrderEnumMap, json['phone']),
-      isVerifed: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerifed']),
+      isVerified: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerified']),
       createdAt: $enumDecodeNullable(_$SortOrderEnumMap, json['createdAt']),
       updatedAt: $enumDecodeNullable(_$SortOrderEnumMap, json['updatedAt']),
     );
@@ -1974,9 +2016,29 @@ Map<String, dynamic> _$UserCountOrderByAggregateInputToJson(
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
   writeNotNull('phone', _$SortOrderEnumMap[instance.phone]);
-  writeNotNull('isVerifed', _$SortOrderEnumMap[instance.isVerifed]);
+  writeNotNull('isVerified', _$SortOrderEnumMap[instance.isVerified]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('updatedAt', _$SortOrderEnumMap[instance.updatedAt]);
+  return val;
+}
+
+UserAvgOrderByAggregateInput _$UserAvgOrderByAggregateInputFromJson(
+        Map<String, dynamic> json) =>
+    UserAvgOrderByAggregateInput(
+      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
+    );
+
+Map<String, dynamic> _$UserAvgOrderByAggregateInputToJson(
+    UserAvgOrderByAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   return val;
 }
 
@@ -1986,7 +2048,7 @@ UserMaxOrderByAggregateInput _$UserMaxOrderByAggregateInputFromJson(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
       phone: $enumDecodeNullable(_$SortOrderEnumMap, json['phone']),
-      isVerifed: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerifed']),
+      isVerified: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerified']),
       createdAt: $enumDecodeNullable(_$SortOrderEnumMap, json['createdAt']),
       updatedAt: $enumDecodeNullable(_$SortOrderEnumMap, json['updatedAt']),
     );
@@ -2004,7 +2066,7 @@ Map<String, dynamic> _$UserMaxOrderByAggregateInputToJson(
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
   writeNotNull('phone', _$SortOrderEnumMap[instance.phone]);
-  writeNotNull('isVerifed', _$SortOrderEnumMap[instance.isVerifed]);
+  writeNotNull('isVerified', _$SortOrderEnumMap[instance.isVerified]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('updatedAt', _$SortOrderEnumMap[instance.updatedAt]);
   return val;
@@ -2016,7 +2078,7 @@ UserMinOrderByAggregateInput _$UserMinOrderByAggregateInputFromJson(
       id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       name: $enumDecodeNullable(_$SortOrderEnumMap, json['name']),
       phone: $enumDecodeNullable(_$SortOrderEnumMap, json['phone']),
-      isVerifed: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerifed']),
+      isVerified: $enumDecodeNullable(_$SortOrderEnumMap, json['isVerified']),
       createdAt: $enumDecodeNullable(_$SortOrderEnumMap, json['createdAt']),
       updatedAt: $enumDecodeNullable(_$SortOrderEnumMap, json['updatedAt']),
     );
@@ -2034,9 +2096,86 @@ Map<String, dynamic> _$UserMinOrderByAggregateInputToJson(
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('name', _$SortOrderEnumMap[instance.name]);
   writeNotNull('phone', _$SortOrderEnumMap[instance.phone]);
-  writeNotNull('isVerifed', _$SortOrderEnumMap[instance.isVerifed]);
+  writeNotNull('isVerified', _$SortOrderEnumMap[instance.isVerified]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
   writeNotNull('updatedAt', _$SortOrderEnumMap[instance.updatedAt]);
+  return val;
+}
+
+UserSumOrderByAggregateInput _$UserSumOrderByAggregateInputFromJson(
+        Map<String, dynamic> json) =>
+    UserSumOrderByAggregateInput(
+      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
+    );
+
+Map<String, dynamic> _$UserSumOrderByAggregateInputToJson(
+    UserSumOrderByAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
+  return val;
+}
+
+IntWithAggregatesFilter _$IntWithAggregatesFilterFromJson(
+        Map<String, dynamic> json) =>
+    IntWithAggregatesFilter(
+      equals: json['equals'] as int?,
+      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
+      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
+      lt: json['lt'] as int?,
+      lte: json['lte'] as int?,
+      gt: json['gt'] as int?,
+      gte: json['gte'] as int?,
+      not: json['not'] == null
+          ? null
+          : NestedIntWithAggregatesFilter.fromJson(
+              json['not'] as Map<String, dynamic>),
+      $count: json['_count'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
+      $avg: json['_avg'] == null
+          ? null
+          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
+      $sum: json['_sum'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
+      $min: json['_min'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
+      $max: json['_max'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$IntWithAggregatesFilterToJson(
+    IntWithAggregatesFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
+  writeNotNull('_count', instance.$count?.toJson());
+  writeNotNull('_avg', instance.$avg?.toJson());
+  writeNotNull('_sum', instance.$sum?.toJson());
+  writeNotNull('_min', instance.$min?.toJson());
+  writeNotNull('_max', instance.$max?.toJson());
   return val;
 }
 
@@ -2205,39 +2344,6 @@ Map<String, dynamic> _$DateTimeWithAggregatesFilterToJson(
   return val;
 }
 
-IntFilter _$IntFilterFromJson(Map<String, dynamic> json) => IntFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$IntFilterToJson(IntFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  return val;
-}
-
 UserRelationFilter _$UserRelationFilterFromJson(Map<String, dynamic> json) =>
     UserRelationFilter(
       $is: json['is'] == null
@@ -2295,6 +2401,7 @@ CodeSendOutAvgOrderByAggregateInput
     _$CodeSendOutAvgOrderByAggregateInputFromJson(Map<String, dynamic> json) =>
         CodeSendOutAvgOrderByAggregateInput(
           id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
+          userId: $enumDecodeNullable(_$SortOrderEnumMap, json['userId']),
         );
 
 Map<String, dynamic> _$CodeSendOutAvgOrderByAggregateInputToJson(
@@ -2308,6 +2415,7 @@ Map<String, dynamic> _$CodeSendOutAvgOrderByAggregateInputToJson(
   }
 
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
+  writeNotNull('userId', _$SortOrderEnumMap[instance.userId]);
   return val;
 }
 
@@ -2371,6 +2479,7 @@ CodeSendOutSumOrderByAggregateInput
     _$CodeSendOutSumOrderByAggregateInputFromJson(Map<String, dynamic> json) =>
         CodeSendOutSumOrderByAggregateInput(
           id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
+          userId: $enumDecodeNullable(_$SortOrderEnumMap, json['userId']),
         );
 
 Map<String, dynamic> _$CodeSendOutSumOrderByAggregateInputToJson(
@@ -2384,63 +2493,7 @@ Map<String, dynamic> _$CodeSendOutSumOrderByAggregateInputToJson(
   }
 
   writeNotNull('id', _$SortOrderEnumMap[instance.id]);
-  return val;
-}
-
-IntWithAggregatesFilter _$IntWithAggregatesFilterFromJson(
-        Map<String, dynamic> json) =>
-    IntWithAggregatesFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntWithAggregatesFilter.fromJson(
-              json['not'] as Map<String, dynamic>),
-      $count: json['_count'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
-      $avg: json['_avg'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
-      $sum: json['_sum'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
-      $min: json['_min'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
-      $max: json['_max'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$IntWithAggregatesFilterToJson(
-    IntWithAggregatesFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  writeNotNull('_count', instance.$count?.toJson());
-  writeNotNull('_avg', instance.$avg?.toJson());
-  writeNotNull('_sum', instance.$sum?.toJson());
-  writeNotNull('_min', instance.$min?.toJson());
-  writeNotNull('_max', instance.$max?.toJson());
+  writeNotNull('userId', _$SortOrderEnumMap[instance.userId]);
   return val;
 }
 
@@ -2539,6 +2592,26 @@ Map<String, dynamic> _$SessionCountOrderByAggregateInputToJson(
   return val;
 }
 
+SessionAvgOrderByAggregateInput _$SessionAvgOrderByAggregateInputFromJson(
+        Map<String, dynamic> json) =>
+    SessionAvgOrderByAggregateInput(
+      userId: $enumDecodeNullable(_$SortOrderEnumMap, json['userId']),
+    );
+
+Map<String, dynamic> _$SessionAvgOrderByAggregateInputToJson(
+    SessionAvgOrderByAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('userId', _$SortOrderEnumMap[instance.userId]);
+  return val;
+}
+
 SessionMaxOrderByAggregateInput _$SessionMaxOrderByAggregateInputFromJson(
         Map<String, dynamic> json) =>
     SessionMaxOrderByAggregateInput(
@@ -2588,6 +2661,26 @@ Map<String, dynamic> _$SessionMinOrderByAggregateInputToJson(
   writeNotNull('userId', _$SortOrderEnumMap[instance.userId]);
   writeNotNull('workspaceId', _$SortOrderEnumMap[instance.workspaceId]);
   writeNotNull('createdAt', _$SortOrderEnumMap[instance.createdAt]);
+  return val;
+}
+
+SessionSumOrderByAggregateInput _$SessionSumOrderByAggregateInputFromJson(
+        Map<String, dynamic> json) =>
+    SessionSumOrderByAggregateInput(
+      userId: $enumDecodeNullable(_$SortOrderEnumMap, json['userId']),
+    );
+
+Map<String, dynamic> _$SessionSumOrderByAggregateInputToJson(
+    SessionSumOrderByAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('userId', _$SortOrderEnumMap[instance.userId]);
   return val;
 }
 
@@ -3020,6 +3113,34 @@ Map<String, dynamic> _$CodeSendOutUpdateManyWithoutUserNestedInputToJson(
   return val;
 }
 
+IntFieldUpdateOperationsInput _$IntFieldUpdateOperationsInputFromJson(
+        Map<String, dynamic> json) =>
+    IntFieldUpdateOperationsInput(
+      set: json['set'] as int?,
+      increment: json['increment'] as int?,
+      decrement: json['decrement'] as int?,
+      multiply: json['multiply'] as int?,
+      divide: json['divide'] as int?,
+    );
+
+Map<String, dynamic> _$IntFieldUpdateOperationsInputToJson(
+    IntFieldUpdateOperationsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('set', instance.set);
+  writeNotNull('increment', instance.increment);
+  writeNotNull('decrement', instance.decrement);
+  writeNotNull('multiply', instance.multiply);
+  writeNotNull('divide', instance.divide);
+  return val;
+}
+
 SessionUncheckedUpdateManyWithoutUserNestedInput
     _$SessionUncheckedUpdateManyWithoutUserNestedInputFromJson(
             Map<String, dynamic> json) =>
@@ -3215,45 +3336,17 @@ Map<String, dynamic> _$UserUpdateOneRequiredWithoutCodeSendOutNestedInputToJson(
   return val;
 }
 
-IntFieldUpdateOperationsInput _$IntFieldUpdateOperationsInputFromJson(
-        Map<String, dynamic> json) =>
-    IntFieldUpdateOperationsInput(
-      set: json['set'] as int?,
-      increment: json['increment'] as int?,
-      decrement: json['decrement'] as int?,
-      multiply: json['multiply'] as int?,
-      divide: json['divide'] as int?,
-    );
-
-Map<String, dynamic> _$IntFieldUpdateOperationsInputToJson(
-    IntFieldUpdateOperationsInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('set', instance.set);
-  writeNotNull('increment', instance.increment);
-  writeNotNull('decrement', instance.decrement);
-  writeNotNull('multiply', instance.multiply);
-  writeNotNull('divide', instance.divide);
-  return val;
-}
-
-UserCreateNestedOneWithoutSesionInput
-    _$UserCreateNestedOneWithoutSesionInputFromJson(
+UserCreateNestedOneWithoutSessionInput
+    _$UserCreateNestedOneWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        UserCreateNestedOneWithoutSesionInput(
+        UserCreateNestedOneWithoutSessionInput(
           create: json['create'] == null
               ? null
-              : UserCreateWithoutSesionInput.fromJson(
+              : UserCreateWithoutSessionInput.fromJson(
                   json['create'] as Map<String, dynamic>),
           connectOrCreate: json['connectOrCreate'] == null
               ? null
-              : UserCreateOrConnectWithoutSesionInput.fromJson(
+              : UserCreateOrConnectWithoutSessionInput.fromJson(
                   json['connectOrCreate'] as Map<String, dynamic>),
           connect: json['connect'] == null
               ? null
@@ -3261,8 +3354,8 @@ UserCreateNestedOneWithoutSesionInput
                   json['connect'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$UserCreateNestedOneWithoutSesionInputToJson(
-    UserCreateNestedOneWithoutSesionInput instance) {
+Map<String, dynamic> _$UserCreateNestedOneWithoutSessionInputToJson(
+    UserCreateNestedOneWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3277,17 +3370,17 @@ Map<String, dynamic> _$UserCreateNestedOneWithoutSesionInputToJson(
   return val;
 }
 
-WorkspaceCreateNestedOneWithoutSesionInput
-    _$WorkspaceCreateNestedOneWithoutSesionInputFromJson(
+WorkspaceCreateNestedOneWithoutSessionInput
+    _$WorkspaceCreateNestedOneWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        WorkspaceCreateNestedOneWithoutSesionInput(
+        WorkspaceCreateNestedOneWithoutSessionInput(
           create: json['create'] == null
               ? null
-              : WorkspaceCreateWithoutSesionInput.fromJson(
+              : WorkspaceCreateWithoutSessionInput.fromJson(
                   json['create'] as Map<String, dynamic>),
           connectOrCreate: json['connectOrCreate'] == null
               ? null
-              : WorkspaceCreateOrConnectWithoutSesionInput.fromJson(
+              : WorkspaceCreateOrConnectWithoutSessionInput.fromJson(
                   json['connectOrCreate'] as Map<String, dynamic>),
           connect: json['connect'] == null
               ? null
@@ -3295,8 +3388,8 @@ WorkspaceCreateNestedOneWithoutSesionInput
                   json['connect'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$WorkspaceCreateNestedOneWithoutSesionInputToJson(
-    WorkspaceCreateNestedOneWithoutSesionInput instance) {
+Map<String, dynamic> _$WorkspaceCreateNestedOneWithoutSessionInputToJson(
+    WorkspaceCreateNestedOneWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3311,21 +3404,21 @@ Map<String, dynamic> _$WorkspaceCreateNestedOneWithoutSesionInputToJson(
   return val;
 }
 
-UserUpdateOneRequiredWithoutSesionNestedInput
-    _$UserUpdateOneRequiredWithoutSesionNestedInputFromJson(
+UserUpdateOneRequiredWithoutSessionNestedInput
+    _$UserUpdateOneRequiredWithoutSessionNestedInputFromJson(
             Map<String, dynamic> json) =>
-        UserUpdateOneRequiredWithoutSesionNestedInput(
+        UserUpdateOneRequiredWithoutSessionNestedInput(
           create: json['create'] == null
               ? null
-              : UserCreateWithoutSesionInput.fromJson(
+              : UserCreateWithoutSessionInput.fromJson(
                   json['create'] as Map<String, dynamic>),
           connectOrCreate: json['connectOrCreate'] == null
               ? null
-              : UserCreateOrConnectWithoutSesionInput.fromJson(
+              : UserCreateOrConnectWithoutSessionInput.fromJson(
                   json['connectOrCreate'] as Map<String, dynamic>),
           upsert: json['upsert'] == null
               ? null
-              : UserUpsertWithoutSesionInput.fromJson(
+              : UserUpsertWithoutSessionInput.fromJson(
                   json['upsert'] as Map<String, dynamic>),
           connect: json['connect'] == null
               ? null
@@ -3333,12 +3426,12 @@ UserUpdateOneRequiredWithoutSesionNestedInput
                   json['connect'] as Map<String, dynamic>),
           update: json['update'] == null
               ? null
-              : UserUpdateWithoutSesionInput.fromJson(
+              : UserUpdateWithoutSessionInput.fromJson(
                   json['update'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$UserUpdateOneRequiredWithoutSesionNestedInputToJson(
-    UserUpdateOneRequiredWithoutSesionNestedInput instance) {
+Map<String, dynamic> _$UserUpdateOneRequiredWithoutSessionNestedInputToJson(
+    UserUpdateOneRequiredWithoutSessionNestedInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3355,21 +3448,21 @@ Map<String, dynamic> _$UserUpdateOneRequiredWithoutSesionNestedInputToJson(
   return val;
 }
 
-WorkspaceUpdateOneWithoutSesionNestedInput
-    _$WorkspaceUpdateOneWithoutSesionNestedInputFromJson(
+WorkspaceUpdateOneWithoutSessionNestedInput
+    _$WorkspaceUpdateOneWithoutSessionNestedInputFromJson(
             Map<String, dynamic> json) =>
-        WorkspaceUpdateOneWithoutSesionNestedInput(
+        WorkspaceUpdateOneWithoutSessionNestedInput(
           create: json['create'] == null
               ? null
-              : WorkspaceCreateWithoutSesionInput.fromJson(
+              : WorkspaceCreateWithoutSessionInput.fromJson(
                   json['create'] as Map<String, dynamic>),
           connectOrCreate: json['connectOrCreate'] == null
               ? null
-              : WorkspaceCreateOrConnectWithoutSesionInput.fromJson(
+              : WorkspaceCreateOrConnectWithoutSessionInput.fromJson(
                   json['connectOrCreate'] as Map<String, dynamic>),
           upsert: json['upsert'] == null
               ? null
-              : WorkspaceUpsertWithoutSesionInput.fromJson(
+              : WorkspaceUpsertWithoutSessionInput.fromJson(
                   json['upsert'] as Map<String, dynamic>),
           disconnect: json['disconnect'] as bool?,
           delete: json['delete'] as bool?,
@@ -3379,12 +3472,12 @@ WorkspaceUpdateOneWithoutSesionNestedInput
                   json['connect'] as Map<String, dynamic>),
           update: json['update'] == null
               ? null
-              : WorkspaceUpdateWithoutSesionInput.fromJson(
+              : WorkspaceUpdateWithoutSessionInput.fromJson(
                   json['update'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$WorkspaceUpdateOneWithoutSesionNestedInputToJson(
-    WorkspaceUpdateOneWithoutSesionNestedInput instance) {
+Map<String, dynamic> _$WorkspaceUpdateOneWithoutSessionNestedInputToJson(
+    WorkspaceUpdateOneWithoutSessionNestedInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3604,6 +3697,40 @@ Map<String, dynamic>
   return val;
 }
 
+NestedIntFilter _$NestedIntFilterFromJson(Map<String, dynamic> json) =>
+    NestedIntFilter(
+      equals: json['equals'] as int?,
+      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
+      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
+      lt: json['lt'] as int?,
+      lte: json['lte'] as int?,
+      gt: json['gt'] as int?,
+      gte: json['gte'] as int?,
+      not: json['not'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$NestedIntFilterToJson(NestedIntFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
+  return val;
+}
+
 NestedStringFilter _$NestedStringFilterFromJson(Map<String, dynamic> json) =>
     NestedStringFilter(
       equals: json['equals'] as String?,
@@ -3726,6 +3853,98 @@ Map<String, dynamic> _$NestedDateTimeFilterToJson(
   return val;
 }
 
+NestedIntWithAggregatesFilter _$NestedIntWithAggregatesFilterFromJson(
+        Map<String, dynamic> json) =>
+    NestedIntWithAggregatesFilter(
+      equals: json['equals'] as int?,
+      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
+      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
+      lt: json['lt'] as int?,
+      lte: json['lte'] as int?,
+      gt: json['gt'] as int?,
+      gte: json['gte'] as int?,
+      not: json['not'] == null
+          ? null
+          : NestedIntWithAggregatesFilter.fromJson(
+              json['not'] as Map<String, dynamic>),
+      $count: json['_count'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
+      $avg: json['_avg'] == null
+          ? null
+          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
+      $sum: json['_sum'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
+      $min: json['_min'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
+      $max: json['_max'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$NestedIntWithAggregatesFilterToJson(
+    NestedIntWithAggregatesFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
+  writeNotNull('_count', instance.$count?.toJson());
+  writeNotNull('_avg', instance.$avg?.toJson());
+  writeNotNull('_sum', instance.$sum?.toJson());
+  writeNotNull('_min', instance.$min?.toJson());
+  writeNotNull('_max', instance.$max?.toJson());
+  return val;
+}
+
+NestedFloatFilter _$NestedFloatFilterFromJson(Map<String, dynamic> json) =>
+    NestedFloatFilter(
+      equals: (json['equals'] as num?)?.toDouble(),
+      $in: (json['in'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
+      notIn:
+          (json['notIn'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
+      lt: (json['lt'] as num?)?.toDouble(),
+      lte: (json['lte'] as num?)?.toDouble(),
+      gt: (json['gt'] as num?)?.toDouble(),
+      gte: (json['gte'] as num?)?.toDouble(),
+      not: json['not'] == null
+          ? null
+          : NestedFloatFilter.fromJson(json['not'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$NestedFloatFilterToJson(NestedFloatFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
+  return val;
+}
+
 NestedStringWithAggregatesFilter _$NestedStringWithAggregatesFilterFromJson(
         Map<String, dynamic> json) =>
     NestedStringWithAggregatesFilter(
@@ -3778,40 +3997,6 @@ Map<String, dynamic> _$NestedStringWithAggregatesFilterToJson(
   writeNotNull('_count', instance.$count?.toJson());
   writeNotNull('_min', instance.$min?.toJson());
   writeNotNull('_max', instance.$max?.toJson());
-  return val;
-}
-
-NestedIntFilter _$NestedIntFilterFromJson(Map<String, dynamic> json) =>
-    NestedIntFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedIntFilterToJson(NestedIntFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
   return val;
 }
 
@@ -3922,98 +4107,6 @@ Map<String, dynamic> _$NestedDateTimeWithAggregatesFilterToJson(
   writeNotNull('_count', instance.$count?.toJson());
   writeNotNull('_min', instance.$min?.toJson());
   writeNotNull('_max', instance.$max?.toJson());
-  return val;
-}
-
-NestedIntWithAggregatesFilter _$NestedIntWithAggregatesFilterFromJson(
-        Map<String, dynamic> json) =>
-    NestedIntWithAggregatesFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntWithAggregatesFilter.fromJson(
-              json['not'] as Map<String, dynamic>),
-      $count: json['_count'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
-      $avg: json['_avg'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
-      $sum: json['_sum'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
-      $min: json['_min'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
-      $max: json['_max'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedIntWithAggregatesFilterToJson(
-    NestedIntWithAggregatesFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  writeNotNull('_count', instance.$count?.toJson());
-  writeNotNull('_avg', instance.$avg?.toJson());
-  writeNotNull('_sum', instance.$sum?.toJson());
-  writeNotNull('_min', instance.$min?.toJson());
-  writeNotNull('_max', instance.$max?.toJson());
-  return val;
-}
-
-NestedFloatFilter _$NestedFloatFilterFromJson(Map<String, dynamic> json) =>
-    NestedFloatFilter(
-      equals: (json['equals'] as num?)?.toDouble(),
-      $in: (json['in'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
-      notIn:
-          (json['notIn'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
-      lt: (json['lt'] as num?)?.toDouble(),
-      lte: (json['lte'] as num?)?.toDouble(),
-      gt: (json['gt'] as num?)?.toDouble(),
-      gte: (json['gte'] as num?)?.toDouble(),
-      not: json['not'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedFloatFilterToJson(NestedFloatFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
   return val;
 }
 
@@ -4164,7 +4257,7 @@ SessionCreateWithoutUserInput _$SessionCreateWithoutUserInputFromJson(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       workspace: json['workspace'] == null
           ? null
-          : WorkspaceCreateNestedOneWithoutSesionInput.fromJson(
+          : WorkspaceCreateNestedOneWithoutSessionInput.fromJson(
               json['workspace'] as Map<String, dynamic>),
     );
 
@@ -4378,7 +4471,7 @@ SessionScalarWhereInput _$SessionScalarWhereInputFromJson(
           : StringFilter.fromJson(json['id'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFilter.fromJson(json['userId'] as Map<String, dynamic>),
+          : IntFilter.fromJson(json['userId'] as Map<String, dynamic>),
       workspaceId: json['workspaceId'] == null
           ? null
           : StringNullableFilter.fromJson(
@@ -4482,7 +4575,7 @@ CodeSendOutScalarWhereInput _$CodeSendOutScalarWhereInputFromJson(
           : StringFilter.fromJson(json['code'] as Map<String, dynamic>),
       userId: json['userId'] == null
           ? null
-          : StringFilter.fromJson(json['userId'] as Map<String, dynamic>),
+          : IntFilter.fromJson(json['userId'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFilter.fromJson(json['createdAt'] as Map<String, dynamic>),
@@ -4512,23 +4605,25 @@ Map<String, dynamic> _$CodeSendOutScalarWhereInputToJson(
 UserCreateWithoutCodeSendOutInput _$UserCreateWithoutCodeSendOutInputFromJson(
         Map<String, dynamic> json) =>
     UserCreateWithoutCodeSendOutInput(
-      id: json['id'] as String?,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      isVerifed: json['isVerifed'] as bool?,
+      isVerified: json['isVerified'] as bool?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<String, DateTime>(
           json['updatedAt'], const DateTimeJsonConverter().fromJson),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionCreateNestedManyWithoutUserInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserCreateWithoutCodeSendOutInputToJson(
     UserCreateWithoutCodeSendOutInput instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'phone': instance.phone,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -4536,10 +4631,7 @@ Map<String, dynamic> _$UserCreateWithoutCodeSendOutInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
-  val['name'] = instance.name;
-  val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -4548,7 +4640,7 @@ Map<String, dynamic> _$UserCreateWithoutCodeSendOutInputToJson(
       'updatedAt',
       _$JsonConverterToJson<String, DateTime>(
           instance.updatedAt, const DateTimeJsonConverter().toJson));
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -4556,18 +4648,18 @@ UserUncheckedCreateWithoutCodeSendOutInput
     _$UserUncheckedCreateWithoutCodeSendOutInputFromJson(
             Map<String, dynamic> json) =>
         UserUncheckedCreateWithoutCodeSendOutInput(
-          id: json['id'] as String?,
+          id: json['id'] as int?,
           name: json['name'] as String,
           phone: json['phone'] as String,
-          isVerifed: json['isVerifed'] as bool?,
+          isVerified: json['isVerified'] as bool?,
           createdAt: _$JsonConverterFromJson<String, DateTime>(
               json['createdAt'], const DateTimeJsonConverter().fromJson),
           updatedAt: _$JsonConverterFromJson<String, DateTime>(
               json['updatedAt'], const DateTimeJsonConverter().fromJson),
-          sesion: json['sesion'] == null
+          session: json['session'] == null
               ? null
               : SessionUncheckedCreateNestedManyWithoutUserInput.fromJson(
-                  json['sesion'] as Map<String, dynamic>),
+                  json['session'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$UserUncheckedCreateWithoutCodeSendOutInputToJson(
@@ -4583,7 +4675,7 @@ Map<String, dynamic> _$UserUncheckedCreateWithoutCodeSendOutInputToJson(
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
   val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -4592,7 +4684,7 @@ Map<String, dynamic> _$UserUncheckedCreateWithoutCodeSendOutInputToJson(
       'updatedAt',
       _$JsonConverterToJson<String, DateTime>(
           instance.updatedAt, const DateTimeJsonConverter().toJson));
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -4632,10 +4724,6 @@ Map<String, dynamic> _$UserUpsertWithoutCodeSendOutInputToJson(
 UserUpdateWithoutCodeSendOutInput _$UserUpdateWithoutCodeSendOutInputFromJson(
         Map<String, dynamic> json) =>
     UserUpdateWithoutCodeSendOutInput(
-      id: json['id'] == null
-          ? null
-          : StringFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
       name: json['name'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -4644,10 +4732,10 @@ UserUpdateWithoutCodeSendOutInput _$UserUpdateWithoutCodeSendOutInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -4656,10 +4744,10 @@ UserUpdateWithoutCodeSendOutInput _$UserUpdateWithoutCodeSendOutInputFromJson(
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
               json['updatedAt'] as Map<String, dynamic>),
-      sesion: json['sesion'] == null
+      session: json['session'] == null
           ? null
           : SessionUpdateManyWithoutUserNestedInput.fromJson(
-              json['sesion'] as Map<String, dynamic>),
+              json['session'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserUpdateWithoutCodeSendOutInputToJson(
@@ -4672,13 +4760,12 @@ Map<String, dynamic> _$UserUpdateWithoutCodeSendOutInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
@@ -4688,7 +4775,7 @@ UserUncheckedUpdateWithoutCodeSendOutInput
         UserUncheckedUpdateWithoutCodeSendOutInput(
           id: json['id'] == null
               ? null
-              : StringFieldUpdateOperationsInput.fromJson(
+              : IntFieldUpdateOperationsInput.fromJson(
                   json['id'] as Map<String, dynamic>),
           name: json['name'] == null
               ? null
@@ -4698,10 +4785,10 @@ UserUncheckedUpdateWithoutCodeSendOutInput
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
                   json['phone'] as Map<String, dynamic>),
-          isVerifed: json['isVerifed'] == null
+          isVerified: json['isVerified'] == null
               ? null
               : BoolFieldUpdateOperationsInput.fromJson(
-                  json['isVerifed'] as Map<String, dynamic>),
+                  json['isVerified'] as Map<String, dynamic>),
           createdAt: json['createdAt'] == null
               ? null
               : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -4710,10 +4797,10 @@ UserUncheckedUpdateWithoutCodeSendOutInput
               ? null
               : DateTimeFieldUpdateOperationsInput.fromJson(
                   json['updatedAt'] as Map<String, dynamic>),
-          sesion: json['sesion'] == null
+          session: json['session'] == null
               ? null
               : SessionUncheckedUpdateManyWithoutUserNestedInput.fromJson(
-                  json['sesion'] as Map<String, dynamic>),
+                  json['session'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$UserUncheckedUpdateWithoutCodeSendOutInputToJson(
@@ -4729,20 +4816,19 @@ Map<String, dynamic> _$UserUncheckedUpdateWithoutCodeSendOutInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
-  writeNotNull('sesion', instance.sesion?.toJson());
+  writeNotNull('session', instance.session?.toJson());
   return val;
 }
 
-UserCreateWithoutSesionInput _$UserCreateWithoutSesionInputFromJson(
+UserCreateWithoutSessionInput _$UserCreateWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    UserCreateWithoutSesionInput(
-      id: json['id'] as String?,
+    UserCreateWithoutSessionInput(
       name: json['name'] as String,
       phone: json['phone'] as String,
-      isVerifed: json['isVerifed'] as bool?,
+      isVerified: json['isVerified'] as bool?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<String, DateTime>(
@@ -4753,9 +4839,12 @@ UserCreateWithoutSesionInput _$UserCreateWithoutSesionInputFromJson(
               json['codeSendOut'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserCreateWithoutSesionInputToJson(
-    UserCreateWithoutSesionInput instance) {
-  final val = <String, dynamic>{};
+Map<String, dynamic> _$UserCreateWithoutSessionInputToJson(
+    UserCreateWithoutSessionInput instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+    'phone': instance.phone,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -4763,10 +4852,7 @@ Map<String, dynamic> _$UserCreateWithoutSesionInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
-  val['name'] = instance.name;
-  val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -4779,14 +4865,14 @@ Map<String, dynamic> _$UserCreateWithoutSesionInputToJson(
   return val;
 }
 
-UserUncheckedCreateWithoutSesionInput
-    _$UserUncheckedCreateWithoutSesionInputFromJson(
+UserUncheckedCreateWithoutSessionInput
+    _$UserUncheckedCreateWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        UserUncheckedCreateWithoutSesionInput(
-          id: json['id'] as String?,
+        UserUncheckedCreateWithoutSessionInput(
+          id: json['id'] as int?,
           name: json['name'] as String,
           phone: json['phone'] as String,
-          isVerifed: json['isVerifed'] as bool?,
+          isVerified: json['isVerified'] as bool?,
           createdAt: _$JsonConverterFromJson<String, DateTime>(
               json['createdAt'], const DateTimeJsonConverter().fromJson),
           updatedAt: _$JsonConverterFromJson<String, DateTime>(
@@ -4797,8 +4883,8 @@ UserUncheckedCreateWithoutSesionInput
                   json['codeSendOut'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$UserUncheckedCreateWithoutSesionInputToJson(
-    UserUncheckedCreateWithoutSesionInput instance) {
+Map<String, dynamic> _$UserUncheckedCreateWithoutSessionInputToJson(
+    UserUncheckedCreateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -4810,7 +4896,7 @@ Map<String, dynamic> _$UserUncheckedCreateWithoutSesionInputToJson(
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
   val['phone'] = instance.phone;
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -4823,32 +4909,32 @@ Map<String, dynamic> _$UserUncheckedCreateWithoutSesionInputToJson(
   return val;
 }
 
-UserCreateOrConnectWithoutSesionInput
-    _$UserCreateOrConnectWithoutSesionInputFromJson(
+UserCreateOrConnectWithoutSessionInput
+    _$UserCreateOrConnectWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        UserCreateOrConnectWithoutSesionInput(
+        UserCreateOrConnectWithoutSessionInput(
           where: UserWhereUniqueInput.fromJson(
               json['where'] as Map<String, dynamic>),
-          create: UserCreateWithoutSesionInput.fromJson(
+          create: UserCreateWithoutSessionInput.fromJson(
               json['create'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$UserCreateOrConnectWithoutSesionInputToJson(
-        UserCreateOrConnectWithoutSesionInput instance) =>
+Map<String, dynamic> _$UserCreateOrConnectWithoutSessionInputToJson(
+        UserCreateOrConnectWithoutSessionInput instance) =>
     <String, dynamic>{
       'where': instance.where.toJson(),
       'create': instance.create.toJson(),
     };
 
-WorkspaceCreateWithoutSesionInput _$WorkspaceCreateWithoutSesionInputFromJson(
+WorkspaceCreateWithoutSessionInput _$WorkspaceCreateWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    WorkspaceCreateWithoutSesionInput(
+    WorkspaceCreateWithoutSessionInput(
       id: json['id'] as String?,
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$WorkspaceCreateWithoutSesionInputToJson(
-    WorkspaceCreateWithoutSesionInput instance) {
+Map<String, dynamic> _$WorkspaceCreateWithoutSessionInputToJson(
+    WorkspaceCreateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -4862,16 +4948,16 @@ Map<String, dynamic> _$WorkspaceCreateWithoutSesionInputToJson(
   return val;
 }
 
-WorkspaceUncheckedCreateWithoutSesionInput
-    _$WorkspaceUncheckedCreateWithoutSesionInputFromJson(
+WorkspaceUncheckedCreateWithoutSessionInput
+    _$WorkspaceUncheckedCreateWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        WorkspaceUncheckedCreateWithoutSesionInput(
+        WorkspaceUncheckedCreateWithoutSessionInput(
           id: json['id'] as String?,
           name: json['name'] as String,
         );
 
-Map<String, dynamic> _$WorkspaceUncheckedCreateWithoutSesionInputToJson(
-    WorkspaceUncheckedCreateWithoutSesionInput instance) {
+Map<String, dynamic> _$WorkspaceUncheckedCreateWithoutSessionInputToJson(
+    WorkspaceUncheckedCreateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -4885,46 +4971,42 @@ Map<String, dynamic> _$WorkspaceUncheckedCreateWithoutSesionInputToJson(
   return val;
 }
 
-WorkspaceCreateOrConnectWithoutSesionInput
-    _$WorkspaceCreateOrConnectWithoutSesionInputFromJson(
+WorkspaceCreateOrConnectWithoutSessionInput
+    _$WorkspaceCreateOrConnectWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        WorkspaceCreateOrConnectWithoutSesionInput(
+        WorkspaceCreateOrConnectWithoutSessionInput(
           where: WorkspaceWhereUniqueInput.fromJson(
               json['where'] as Map<String, dynamic>),
-          create: WorkspaceCreateWithoutSesionInput.fromJson(
+          create: WorkspaceCreateWithoutSessionInput.fromJson(
               json['create'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$WorkspaceCreateOrConnectWithoutSesionInputToJson(
-        WorkspaceCreateOrConnectWithoutSesionInput instance) =>
+Map<String, dynamic> _$WorkspaceCreateOrConnectWithoutSessionInputToJson(
+        WorkspaceCreateOrConnectWithoutSessionInput instance) =>
     <String, dynamic>{
       'where': instance.where.toJson(),
       'create': instance.create.toJson(),
     };
 
-UserUpsertWithoutSesionInput _$UserUpsertWithoutSesionInputFromJson(
+UserUpsertWithoutSessionInput _$UserUpsertWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    UserUpsertWithoutSesionInput(
-      update: UserUpdateWithoutSesionInput.fromJson(
+    UserUpsertWithoutSessionInput(
+      update: UserUpdateWithoutSessionInput.fromJson(
           json['update'] as Map<String, dynamic>),
-      create: UserCreateWithoutSesionInput.fromJson(
+      create: UserCreateWithoutSessionInput.fromJson(
           json['create'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserUpsertWithoutSesionInputToJson(
-        UserUpsertWithoutSesionInput instance) =>
+Map<String, dynamic> _$UserUpsertWithoutSessionInputToJson(
+        UserUpsertWithoutSessionInput instance) =>
     <String, dynamic>{
       'update': instance.update.toJson(),
       'create': instance.create.toJson(),
     };
 
-UserUpdateWithoutSesionInput _$UserUpdateWithoutSesionInputFromJson(
+UserUpdateWithoutSessionInput _$UserUpdateWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    UserUpdateWithoutSesionInput(
-      id: json['id'] == null
-          ? null
-          : StringFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
+    UserUpdateWithoutSessionInput(
       name: json['name'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -4933,10 +5015,10 @@ UserUpdateWithoutSesionInput _$UserUpdateWithoutSesionInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['phone'] as Map<String, dynamic>),
-      isVerifed: json['isVerifed'] == null
+      isVerified: json['isVerified'] == null
           ? null
           : BoolFieldUpdateOperationsInput.fromJson(
-              json['isVerifed'] as Map<String, dynamic>),
+              json['isVerified'] as Map<String, dynamic>),
       createdAt: json['createdAt'] == null
           ? null
           : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -4951,8 +5033,8 @@ UserUpdateWithoutSesionInput _$UserUpdateWithoutSesionInputFromJson(
               json['codeSendOut'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserUpdateWithoutSesionInputToJson(
-    UserUpdateWithoutSesionInput instance) {
+Map<String, dynamic> _$UserUpdateWithoutSessionInputToJson(
+    UserUpdateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -4961,23 +5043,22 @@ Map<String, dynamic> _$UserUpdateWithoutSesionInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
 
-UserUncheckedUpdateWithoutSesionInput
-    _$UserUncheckedUpdateWithoutSesionInputFromJson(
+UserUncheckedUpdateWithoutSessionInput
+    _$UserUncheckedUpdateWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        UserUncheckedUpdateWithoutSesionInput(
+        UserUncheckedUpdateWithoutSessionInput(
           id: json['id'] == null
               ? null
-              : StringFieldUpdateOperationsInput.fromJson(
+              : IntFieldUpdateOperationsInput.fromJson(
                   json['id'] as Map<String, dynamic>),
           name: json['name'] == null
               ? null
@@ -4987,10 +5068,10 @@ UserUncheckedUpdateWithoutSesionInput
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
                   json['phone'] as Map<String, dynamic>),
-          isVerifed: json['isVerifed'] == null
+          isVerified: json['isVerified'] == null
               ? null
               : BoolFieldUpdateOperationsInput.fromJson(
-                  json['isVerifed'] as Map<String, dynamic>),
+                  json['isVerified'] as Map<String, dynamic>),
           createdAt: json['createdAt'] == null
               ? null
               : DateTimeFieldUpdateOperationsInput.fromJson(
@@ -5005,8 +5086,8 @@ UserUncheckedUpdateWithoutSesionInput
                   json['codeSendOut'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$UserUncheckedUpdateWithoutSesionInputToJson(
-    UserUncheckedUpdateWithoutSesionInput instance) {
+Map<String, dynamic> _$UserUncheckedUpdateWithoutSessionInputToJson(
+    UserUncheckedUpdateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5018,32 +5099,32 @@ Map<String, dynamic> _$UserUncheckedUpdateWithoutSesionInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('name', instance.name?.toJson());
   writeNotNull('phone', instance.phone?.toJson());
-  writeNotNull('isVerifed', instance.isVerifed?.toJson());
+  writeNotNull('isVerified', instance.isVerified?.toJson());
   writeNotNull('createdAt', instance.createdAt?.toJson());
   writeNotNull('updatedAt', instance.updatedAt?.toJson());
   writeNotNull('codeSendOut', instance.codeSendOut?.toJson());
   return val;
 }
 
-WorkspaceUpsertWithoutSesionInput _$WorkspaceUpsertWithoutSesionInputFromJson(
+WorkspaceUpsertWithoutSessionInput _$WorkspaceUpsertWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    WorkspaceUpsertWithoutSesionInput(
-      update: WorkspaceUpdateWithoutSesionInput.fromJson(
+    WorkspaceUpsertWithoutSessionInput(
+      update: WorkspaceUpdateWithoutSessionInput.fromJson(
           json['update'] as Map<String, dynamic>),
-      create: WorkspaceCreateWithoutSesionInput.fromJson(
+      create: WorkspaceCreateWithoutSessionInput.fromJson(
           json['create'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$WorkspaceUpsertWithoutSesionInputToJson(
-        WorkspaceUpsertWithoutSesionInput instance) =>
+Map<String, dynamic> _$WorkspaceUpsertWithoutSessionInputToJson(
+        WorkspaceUpsertWithoutSessionInput instance) =>
     <String, dynamic>{
       'update': instance.update.toJson(),
       'create': instance.create.toJson(),
     };
 
-WorkspaceUpdateWithoutSesionInput _$WorkspaceUpdateWithoutSesionInputFromJson(
+WorkspaceUpdateWithoutSessionInput _$WorkspaceUpdateWithoutSessionInputFromJson(
         Map<String, dynamic> json) =>
-    WorkspaceUpdateWithoutSesionInput(
+    WorkspaceUpdateWithoutSessionInput(
       id: json['id'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -5054,8 +5135,8 @@ WorkspaceUpdateWithoutSesionInput _$WorkspaceUpdateWithoutSesionInputFromJson(
               json['name'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$WorkspaceUpdateWithoutSesionInputToJson(
-    WorkspaceUpdateWithoutSesionInput instance) {
+Map<String, dynamic> _$WorkspaceUpdateWithoutSessionInputToJson(
+    WorkspaceUpdateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5069,10 +5150,10 @@ Map<String, dynamic> _$WorkspaceUpdateWithoutSesionInputToJson(
   return val;
 }
 
-WorkspaceUncheckedUpdateWithoutSesionInput
-    _$WorkspaceUncheckedUpdateWithoutSesionInputFromJson(
+WorkspaceUncheckedUpdateWithoutSessionInput
+    _$WorkspaceUncheckedUpdateWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        WorkspaceUncheckedUpdateWithoutSesionInput(
+        WorkspaceUncheckedUpdateWithoutSessionInput(
           id: json['id'] == null
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
@@ -5083,8 +5164,8 @@ WorkspaceUncheckedUpdateWithoutSesionInput
                   json['name'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$WorkspaceUncheckedUpdateWithoutSesionInputToJson(
-    WorkspaceUncheckedUpdateWithoutSesionInput instance) {
+Map<String, dynamic> _$WorkspaceUncheckedUpdateWithoutSessionInputToJson(
+    WorkspaceUncheckedUpdateWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5104,7 +5185,7 @@ SessionCreateWithoutWorkspaceInput _$SessionCreateWithoutWorkspaceInputFromJson(
       id: json['id'] as String?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
-      user: UserCreateNestedOneWithoutSesionInput.fromJson(
+      user: UserCreateNestedOneWithoutSessionInput.fromJson(
           json['user'] as Map<String, dynamic>),
     );
 
@@ -5132,7 +5213,7 @@ SessionUncheckedCreateWithoutWorkspaceInput
             Map<String, dynamic> json) =>
         SessionUncheckedCreateWithoutWorkspaceInput(
           id: json['id'] as String?,
-          userId: json['userId'] as String,
+          userId: json['userId'] as int,
           createdAt: _$JsonConverterFromJson<String, DateTime>(
               json['createdAt'], const DateTimeJsonConverter().fromJson),
         );
@@ -5240,7 +5321,7 @@ SessionUpdateWithoutUserInput _$SessionUpdateWithoutUserInputFromJson(
               json['createdAt'] as Map<String, dynamic>),
       workspace: json['workspace'] == null
           ? null
-          : WorkspaceUpdateOneWithoutSesionNestedInput.fromJson(
+          : WorkspaceUpdateOneWithoutSessionNestedInput.fromJson(
               json['workspace'] as Map<String, dynamic>),
     );
 
@@ -5294,10 +5375,10 @@ Map<String, dynamic> _$SessionUncheckedUpdateWithoutUserInputToJson(
   return val;
 }
 
-SessionUncheckedUpdateManyWithoutSesionInput
-    _$SessionUncheckedUpdateManyWithoutSesionInputFromJson(
+SessionUncheckedUpdateManyWithoutSessionInput
+    _$SessionUncheckedUpdateManyWithoutSessionInputFromJson(
             Map<String, dynamic> json) =>
-        SessionUncheckedUpdateManyWithoutSesionInput(
+        SessionUncheckedUpdateManyWithoutSessionInput(
           id: json['id'] == null
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
@@ -5312,8 +5393,8 @@ SessionUncheckedUpdateManyWithoutSesionInput
                   json['createdAt'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$SessionUncheckedUpdateManyWithoutSesionInputToJson(
-    SessionUncheckedUpdateManyWithoutSesionInput instance) {
+Map<String, dynamic> _$SessionUncheckedUpdateManyWithoutSessionInputToJson(
+    SessionUncheckedUpdateManyWithoutSessionInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5453,7 +5534,7 @@ SessionUpdateWithoutWorkspaceInput _$SessionUpdateWithoutWorkspaceInputFromJson(
               json['createdAt'] as Map<String, dynamic>),
       user: json['user'] == null
           ? null
-          : UserUpdateOneRequiredWithoutSesionNestedInput.fromJson(
+          : UserUpdateOneRequiredWithoutSessionNestedInput.fromJson(
               json['user'] as Map<String, dynamic>),
     );
 
@@ -5483,7 +5564,7 @@ SessionUncheckedUpdateWithoutWorkspaceInput
                   json['id'] as Map<String, dynamic>),
           userId: json['userId'] == null
               ? null
-              : StringFieldUpdateOperationsInput.fromJson(
+              : IntFieldUpdateOperationsInput.fromJson(
                   json['userId'] as Map<String, dynamic>),
           createdAt: json['createdAt'] == null
               ? null
@@ -5508,10 +5589,10 @@ Map<String, dynamic> _$SessionUncheckedUpdateWithoutWorkspaceInputToJson(
 }
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      id: json['id'] as String,
+      id: json['id'] as int,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      isVerifed: json['isVerifed'] as bool,
+      isVerified: json['isVerified'] as bool,
       createdAt:
           const DateTimeJsonConverter().fromJson(json['createdAt'] as String),
       updatedAt:
@@ -5522,7 +5603,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'phone': instance.phone,
-      'isVerifed': instance.isVerifed,
+      'isVerified': instance.isVerified,
       'createdAt': const DateTimeJsonConverter().toJson(instance.createdAt),
       'updatedAt': const DateTimeJsonConverter().toJson(instance.updatedAt),
     };
@@ -5531,7 +5612,7 @@ CodeSendOut _$CodeSendOutFromJson(Map<String, dynamic> json) => CodeSendOut(
       id: json['id'] as int,
       phone: json['phone'] as String,
       code: json['code'] as String,
-      userId: json['userId'] as String,
+      userId: json['userId'] as int,
       createdAt:
           const DateTimeJsonConverter().fromJson(json['createdAt'] as String),
     );
@@ -5547,7 +5628,7 @@ Map<String, dynamic> _$CodeSendOutToJson(CodeSendOut instance) =>
 
 Session _$SessionFromJson(Map<String, dynamic> json) => Session(
       id: json['id'] as String,
-      userId: json['userId'] as String,
+      userId: json['userId'] as int,
       workspaceId: json['workspaceId'] as String?,
       createdAt:
           const DateTimeJsonConverter().fromJson(json['createdAt'] as String),
@@ -5583,10 +5664,10 @@ Map<String, dynamic> _$WorkspaceToJson(Workspace instance) => <String, dynamic>{
 UserGroupByOutputType _$UserGroupByOutputTypeFromJson(
         Map<String, dynamic> json) =>
     UserGroupByOutputType(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
       phone: json['phone'] as String?,
-      isVerifed: json['isVerifed'] as bool?,
+      isVerified: json['isVerified'] as bool?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
       updatedAt: _$JsonConverterFromJson<String, DateTime>(
@@ -5606,7 +5687,7 @@ Map<String, dynamic> _$UserGroupByOutputTypeToJson(
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
   writeNotNull('phone', instance.phone);
-  writeNotNull('isVerifed', instance.isVerifed);
+  writeNotNull('isVerified', instance.isVerified);
   writeNotNull(
       'createdAt',
       _$JsonConverterToJson<String, DateTime>(
@@ -5624,7 +5705,7 @@ CodeSendOutGroupByOutputType _$CodeSendOutGroupByOutputTypeFromJson(
       id: json['id'] as int?,
       phone: json['phone'] as String?,
       code: json['code'] as String?,
-      userId: json['userId'] as String?,
+      userId: json['userId'] as int?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),
     );
@@ -5654,7 +5735,7 @@ SessionGroupByOutputType _$SessionGroupByOutputTypeFromJson(
         Map<String, dynamic> json) =>
     SessionGroupByOutputType(
       id: json['id'] as String?,
-      userId: json['userId'] as String?,
+      userId: json['userId'] as int?,
       workspaceId: json['workspaceId'] as String?,
       createdAt: _$JsonConverterFromJson<String, DateTime>(
           json['createdAt'], const DateTimeJsonConverter().fromJson),

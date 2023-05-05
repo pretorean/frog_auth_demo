@@ -1,10 +1,10 @@
 import 'package:auth_storage/auth_storage.dart';
 import 'package:frog_auth_demo/auth_database_client.dart';
 
-class AuthRepository {
+class UserRepository {
   final AuthDatabaseClient db;
 
-  AuthRepository(this.db);
+  UserRepository(this.db);
 
   Future<bool> existUserByPhone(String phone) async {
     final user = await db.client.user.findFirst(

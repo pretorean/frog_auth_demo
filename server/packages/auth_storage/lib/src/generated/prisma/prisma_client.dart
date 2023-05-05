@@ -42,7 +42,7 @@ enum UserScalarFieldEnum implements _i1.PrismaEnum {
   id,
   name,
   phone,
-  isVerifed,
+  isVerified,
   createdAt,
   updatedAt;
 
@@ -67,10 +67,10 @@ class UserWhereInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
@@ -83,19 +83,19 @@ class UserWhereInput implements _i1.JsonSerializable {
 
   final Iterable<UserWhereInput>? NOT;
 
-  final StringFilter? id;
+  final IntFilter? id;
 
   final StringFilter? name;
 
   final StringFilter? phone;
 
-  final BoolFilter? isVerifed;
+  final BoolFilter? isVerified;
 
   final DateTimeFilter? createdAt;
 
   final DateTimeFilter? updatedAt;
 
-  final SessionListRelationFilter? sesion;
+  final SessionListRelationFilter? session;
 
   final CodeSendOutListRelationFilter? codeSendOut;
 
@@ -109,10 +109,10 @@ class UserOrderByWithRelationInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
@@ -125,13 +125,13 @@ class UserOrderByWithRelationInput implements _i1.JsonSerializable {
 
   final SortOrder? phone;
 
-  final SortOrder? isVerifed;
+  final SortOrder? isVerified;
 
   final SortOrder? createdAt;
 
   final SortOrder? updatedAt;
 
-  final SessionOrderByRelationAggregateInput? sesion;
+  final SessionOrderByRelationAggregateInput? session;
 
   final CodeSendOutOrderByRelationAggregateInput? codeSendOut;
 
@@ -149,7 +149,7 @@ class UserWhereUniqueInput implements _i1.JsonSerializable {
   factory UserWhereUniqueInput.fromJson(Map<String, dynamic> json) =>
       _$UserWhereUniqueInputFromJson(json);
 
-  final String? id;
+  final int? id;
 
   final String? phone;
 
@@ -163,12 +163,14 @@ class UserOrderByWithAggregationInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
     this.$count,
+    this.$avg,
     this.$max,
     this.$min,
+    this.$sum,
   });
 
   factory UserOrderByWithAggregationInput.fromJson(Map<String, dynamic> json) =>
@@ -180,7 +182,7 @@ class UserOrderByWithAggregationInput implements _i1.JsonSerializable {
 
   final SortOrder? phone;
 
-  final SortOrder? isVerifed;
+  final SortOrder? isVerified;
 
   final SortOrder? createdAt;
 
@@ -189,11 +191,17 @@ class UserOrderByWithAggregationInput implements _i1.JsonSerializable {
   @JsonKey(name: r'_count')
   final UserCountOrderByAggregateInput? $count;
 
+  @JsonKey(name: r'_avg')
+  final UserAvgOrderByAggregateInput? $avg;
+
   @JsonKey(name: r'_max')
   final UserMaxOrderByAggregateInput? $max;
 
   @JsonKey(name: r'_min')
   final UserMinOrderByAggregateInput? $min;
+
+  @JsonKey(name: r'_sum')
+  final UserSumOrderByAggregateInput? $sum;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -209,7 +217,7 @@ class UserScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -224,13 +232,13 @@ class UserScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
 
   final Iterable<UserScalarWhereWithAggregatesInput>? NOT;
 
-  final StringWithAggregatesFilter? id;
+  final IntWithAggregatesFilter? id;
 
   final StringWithAggregatesFilter? name;
 
   final StringWithAggregatesFilter? phone;
 
-  final BoolWithAggregatesFilter? isVerifed;
+  final BoolWithAggregatesFilter? isVerified;
 
   final DateTimeWithAggregatesFilter? createdAt;
 
@@ -270,7 +278,7 @@ class CodeSendOutWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? code;
 
-  final StringFilter? userId;
+  final IntFilter? userId;
 
   final DateTimeFilter? createdAt;
 
@@ -404,7 +412,7 @@ class CodeSendOutScalarWhereWithAggregatesInput
 
   final StringWithAggregatesFilter? code;
 
-  final StringWithAggregatesFilter? userId;
+  final IntWithAggregatesFilter? userId;
 
   final DateTimeWithAggregatesFilter? createdAt;
 
@@ -438,7 +446,7 @@ class SessionWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? id;
 
-  final StringFilter? userId;
+  final IntFilter? userId;
 
   final StringNullableFilter? workspaceId;
 
@@ -504,8 +512,10 @@ class SessionOrderByWithAggregationInput implements _i1.JsonSerializable {
     this.workspaceId,
     this.createdAt,
     this.$count,
+    this.$avg,
     this.$max,
     this.$min,
+    this.$sum,
   });
 
   factory SessionOrderByWithAggregationInput.fromJson(
@@ -523,11 +533,17 @@ class SessionOrderByWithAggregationInput implements _i1.JsonSerializable {
   @JsonKey(name: r'_count')
   final SessionCountOrderByAggregateInput? $count;
 
+  @JsonKey(name: r'_avg')
+  final SessionAvgOrderByAggregateInput? $avg;
+
   @JsonKey(name: r'_max')
   final SessionMaxOrderByAggregateInput? $max;
 
   @JsonKey(name: r'_min')
   final SessionMinOrderByAggregateInput? $min;
+
+  @JsonKey(name: r'_sum')
+  final SessionSumOrderByAggregateInput? $sum;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -558,7 +574,7 @@ class SessionScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
 
   final StringWithAggregatesFilter? id;
 
-  final StringWithAggregatesFilter? userId;
+  final IntWithAggregatesFilter? userId;
 
   final StringNullableWithAggregatesFilter? workspaceId;
 
@@ -577,7 +593,7 @@ class WorkspaceWhereInput implements _i1.JsonSerializable {
     this.NOT,
     this.id,
     this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -593,7 +609,7 @@ class WorkspaceWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? name;
 
-  final SessionListRelationFilter? sesion;
+  final SessionListRelationFilter? session;
 
   @override
   Map<String, dynamic> toJson() => _$WorkspaceWhereInputToJson(this);
@@ -604,7 +620,7 @@ class WorkspaceOrderByWithRelationInput implements _i1.JsonSerializable {
   const WorkspaceOrderByWithRelationInput({
     this.id,
     this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceOrderByWithRelationInput.fromJson(
@@ -615,7 +631,7 @@ class WorkspaceOrderByWithRelationInput implements _i1.JsonSerializable {
 
   final SortOrder? name;
 
-  final SessionOrderByRelationAggregateInput? sesion;
+  final SessionOrderByRelationAggregateInput? session;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -699,32 +715,29 @@ class WorkspaceScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserCreateInput implements _i1.JsonSerializable {
   const UserCreateInput({
-    this.id,
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
   factory UserCreateInput.fromJson(Map<String, dynamic> json) =>
       _$UserCreateInputFromJson(json);
 
-  final String? id;
-
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
   final DateTime? updatedAt;
 
-  final SessionCreateNestedManyWithoutUserInput? sesion;
+  final SessionCreateNestedManyWithoutUserInput? session;
 
   final CodeSendOutCreateNestedManyWithoutUserInput? codeSendOut;
 
@@ -738,29 +751,29 @@ class UserUncheckedCreateInput implements _i1.JsonSerializable {
     this.id,
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
   factory UserUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
       _$UserUncheckedCreateInputFromJson(json);
 
-  final String? id;
+  final int? id;
 
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
   final DateTime? updatedAt;
 
-  final SessionUncheckedCreateNestedManyWithoutUserInput? sesion;
+  final SessionUncheckedCreateNestedManyWithoutUserInput? session;
 
   final CodeSendOutUncheckedCreateNestedManyWithoutUserInput? codeSendOut;
 
@@ -771,32 +784,29 @@ class UserUncheckedCreateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserUpdateInput implements _i1.JsonSerializable {
   const UserUpdateInput({
-    this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
   factory UserUpdateInput.fromJson(Map<String, dynamic> json) =>
       _$UserUpdateInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
-
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
   final DateTimeFieldUpdateOperationsInput? updatedAt;
 
-  final SessionUpdateManyWithoutUserNestedInput? sesion;
+  final SessionUpdateManyWithoutUserNestedInput? session;
 
   final CodeSendOutUpdateManyWithoutUserNestedInput? codeSendOut;
 
@@ -810,29 +820,29 @@ class UserUncheckedUpdateInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
     this.codeSendOut,
   });
 
   factory UserUncheckedUpdateInput.fromJson(Map<String, dynamic> json) =>
       _$UserUncheckedUpdateInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
+  final IntFieldUpdateOperationsInput? id;
 
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
   final DateTimeFieldUpdateOperationsInput? updatedAt;
 
-  final SessionUncheckedUpdateManyWithoutUserNestedInput? sesion;
+  final SessionUncheckedUpdateManyWithoutUserNestedInput? session;
 
   final CodeSendOutUncheckedUpdateManyWithoutUserNestedInput? codeSendOut;
 
@@ -843,10 +853,9 @@ class UserUncheckedUpdateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserUpdateManyMutationInput implements _i1.JsonSerializable {
   const UserUpdateManyMutationInput({
-    this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -854,13 +863,11 @@ class UserUpdateManyMutationInput implements _i1.JsonSerializable {
   factory UserUpdateManyMutationInput.fromJson(Map<String, dynamic> json) =>
       _$UserUpdateManyMutationInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
-
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -876,7 +883,7 @@ class UserUncheckedUpdateManyInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -884,13 +891,13 @@ class UserUncheckedUpdateManyInput implements _i1.JsonSerializable {
   factory UserUncheckedUpdateManyInput.fromJson(Map<String, dynamic> json) =>
       _$UserUncheckedUpdateManyInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
+  final IntFieldUpdateOperationsInput? id;
 
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -943,7 +950,7 @@ class CodeSendOutUncheckedCreateInput implements _i1.JsonSerializable {
 
   final String code;
 
-  final String userId;
+  final int userId;
 
   final DateTime? createdAt;
 
@@ -995,7 +1002,7 @@ class CodeSendOutUncheckedUpdateInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? code;
 
-  final StringFieldUpdateOperationsInput? userId;
+  final IntFieldUpdateOperationsInput? userId;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -1047,7 +1054,7 @@ class CodeSendOutUncheckedUpdateManyInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? code;
 
-  final StringFieldUpdateOperationsInput? userId;
+  final IntFieldUpdateOperationsInput? userId;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -1072,9 +1079,9 @@ class SessionCreateInput implements _i1.JsonSerializable {
 
   final DateTime? createdAt;
 
-  final UserCreateNestedOneWithoutSesionInput user;
+  final UserCreateNestedOneWithoutSessionInput user;
 
-  final WorkspaceCreateNestedOneWithoutSesionInput? workspace;
+  final WorkspaceCreateNestedOneWithoutSessionInput? workspace;
 
   @override
   Map<String, dynamic> toJson() => _$SessionCreateInputToJson(this);
@@ -1094,7 +1101,7 @@ class SessionUncheckedCreateInput implements _i1.JsonSerializable {
 
   final String? id;
 
-  final String userId;
+  final int userId;
 
   final String? workspaceId;
 
@@ -1120,9 +1127,9 @@ class SessionUpdateInput implements _i1.JsonSerializable {
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
-  final UserUpdateOneRequiredWithoutSesionNestedInput? user;
+  final UserUpdateOneRequiredWithoutSessionNestedInput? user;
 
-  final WorkspaceUpdateOneWithoutSesionNestedInput? workspace;
+  final WorkspaceUpdateOneWithoutSessionNestedInput? workspace;
 
   @override
   Map<String, dynamic> toJson() => _$SessionUpdateInputToJson(this);
@@ -1142,7 +1149,7 @@ class SessionUncheckedUpdateInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? id;
 
-  final StringFieldUpdateOperationsInput? userId;
+  final IntFieldUpdateOperationsInput? userId;
 
   final NullableStringFieldUpdateOperationsInput? workspaceId;
 
@@ -1184,7 +1191,7 @@ class SessionUncheckedUpdateManyInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? id;
 
-  final StringFieldUpdateOperationsInput? userId;
+  final IntFieldUpdateOperationsInput? userId;
 
   final NullableStringFieldUpdateOperationsInput? workspaceId;
 
@@ -1200,7 +1207,7 @@ class WorkspaceCreateInput implements _i1.JsonSerializable {
   const WorkspaceCreateInput({
     this.id,
     required this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1210,7 +1217,7 @@ class WorkspaceCreateInput implements _i1.JsonSerializable {
 
   final String name;
 
-  final SessionCreateNestedManyWithoutWorkspaceInput? sesion;
+  final SessionCreateNestedManyWithoutWorkspaceInput? session;
 
   @override
   Map<String, dynamic> toJson() => _$WorkspaceCreateInputToJson(this);
@@ -1221,7 +1228,7 @@ class WorkspaceUncheckedCreateInput implements _i1.JsonSerializable {
   const WorkspaceUncheckedCreateInput({
     this.id,
     required this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1231,7 +1238,7 @@ class WorkspaceUncheckedCreateInput implements _i1.JsonSerializable {
 
   final String name;
 
-  final SessionUncheckedCreateNestedManyWithoutWorkspaceInput? sesion;
+  final SessionUncheckedCreateNestedManyWithoutWorkspaceInput? session;
 
   @override
   Map<String, dynamic> toJson() => _$WorkspaceUncheckedCreateInputToJson(this);
@@ -1242,7 +1249,7 @@ class WorkspaceUpdateInput implements _i1.JsonSerializable {
   const WorkspaceUpdateInput({
     this.id,
     this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1252,7 +1259,7 @@ class WorkspaceUpdateInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? name;
 
-  final SessionUpdateManyWithoutWorkspaceNestedInput? sesion;
+  final SessionUpdateManyWithoutWorkspaceNestedInput? session;
 
   @override
   Map<String, dynamic> toJson() => _$WorkspaceUpdateInputToJson(this);
@@ -1263,7 +1270,7 @@ class WorkspaceUncheckedUpdateInput implements _i1.JsonSerializable {
   const WorkspaceUncheckedUpdateInput({
     this.id,
     this.name,
-    this.sesion,
+    this.session,
   });
 
   factory WorkspaceUncheckedUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1273,7 +1280,7 @@ class WorkspaceUncheckedUpdateInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? name;
 
-  final SessionUncheckedUpdateManyWithoutWorkspaceNestedInput? sesion;
+  final SessionUncheckedUpdateManyWithoutWorkspaceNestedInput? session;
 
   @override
   Map<String, dynamic> toJson() => _$WorkspaceUncheckedUpdateInputToJson(this);
@@ -1317,6 +1324,43 @@ class WorkspaceUncheckedUpdateManyInput implements _i1.JsonSerializable {
   @override
   Map<String, dynamic> toJson() =>
       _$WorkspaceUncheckedUpdateManyInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class IntFilter implements _i1.JsonSerializable {
+  const IntFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+  });
+
+  factory IntFilter.fromJson(Map<String, dynamic> json) =>
+      _$IntFilterFromJson(json);
+
+  final int? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<int>? $in;
+
+  final Iterable<int>? notIn;
+
+  final int? lt;
+
+  final int? lte;
+
+  final int? gt;
+
+  final int? gte;
+
+  final NestedIntFilter? not;
+
+  @override
+  Map<String, dynamic> toJson() => _$IntFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -1500,7 +1544,7 @@ class UserCountOrderByAggregateInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -1514,7 +1558,7 @@ class UserCountOrderByAggregateInput implements _i1.JsonSerializable {
 
   final SortOrder? phone;
 
-  final SortOrder? isVerifed;
+  final SortOrder? isVerified;
 
   final SortOrder? createdAt;
 
@@ -1525,12 +1569,25 @@ class UserCountOrderByAggregateInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class UserAvgOrderByAggregateInput implements _i1.JsonSerializable {
+  const UserAvgOrderByAggregateInput({this.id});
+
+  factory UserAvgOrderByAggregateInput.fromJson(Map<String, dynamic> json) =>
+      _$UserAvgOrderByAggregateInputFromJson(json);
+
+  final SortOrder? id;
+
+  @override
+  Map<String, dynamic> toJson() => _$UserAvgOrderByAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class UserMaxOrderByAggregateInput implements _i1.JsonSerializable {
   const UserMaxOrderByAggregateInput({
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -1544,7 +1601,7 @@ class UserMaxOrderByAggregateInput implements _i1.JsonSerializable {
 
   final SortOrder? phone;
 
-  final SortOrder? isVerifed;
+  final SortOrder? isVerified;
 
   final SortOrder? createdAt;
 
@@ -1560,7 +1617,7 @@ class UserMinOrderByAggregateInput implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -1574,7 +1631,7 @@ class UserMinOrderByAggregateInput implements _i1.JsonSerializable {
 
   final SortOrder? phone;
 
-  final SortOrder? isVerifed;
+  final SortOrder? isVerified;
 
   final SortOrder? createdAt;
 
@@ -1582,6 +1639,76 @@ class UserMinOrderByAggregateInput implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() => _$UserMinOrderByAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class UserSumOrderByAggregateInput implements _i1.JsonSerializable {
+  const UserSumOrderByAggregateInput({this.id});
+
+  factory UserSumOrderByAggregateInput.fromJson(Map<String, dynamic> json) =>
+      _$UserSumOrderByAggregateInputFromJson(json);
+
+  final SortOrder? id;
+
+  @override
+  Map<String, dynamic> toJson() => _$UserSumOrderByAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class IntWithAggregatesFilter implements _i1.JsonSerializable {
+  const IntWithAggregatesFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+    this.$count,
+    this.$avg,
+    this.$sum,
+    this.$min,
+    this.$max,
+  });
+
+  factory IntWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
+      _$IntWithAggregatesFilterFromJson(json);
+
+  final int? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<int>? $in;
+
+  final Iterable<int>? notIn;
+
+  final int? lt;
+
+  final int? lte;
+
+  final int? gt;
+
+  final int? gte;
+
+  final NestedIntWithAggregatesFilter? not;
+
+  @JsonKey(name: r'_count')
+  final NestedIntFilter? $count;
+
+  @JsonKey(name: r'_avg')
+  final NestedFloatFilter? $avg;
+
+  @JsonKey(name: r'_sum')
+  final NestedIntFilter? $sum;
+
+  @JsonKey(name: r'_min')
+  final NestedIntFilter? $min;
+
+  @JsonKey(name: r'_max')
+  final NestedIntFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() => _$IntWithAggregatesFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -1722,43 +1849,6 @@ class DateTimeWithAggregatesFilter implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
-class IntFilter implements _i1.JsonSerializable {
-  const IntFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-  });
-
-  factory IntFilter.fromJson(Map<String, dynamic> json) =>
-      _$IntFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntFilter? not;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntFilterToJson(this);
-}
-
-@_i1.jsonSerializable
 class UserRelationFilter implements _i1.JsonSerializable {
   const UserRelationFilter({
     this.$is,
@@ -1808,13 +1898,18 @@ class CodeSendOutCountOrderByAggregateInput implements _i1.JsonSerializable {
 
 @_i1.jsonSerializable
 class CodeSendOutAvgOrderByAggregateInput implements _i1.JsonSerializable {
-  const CodeSendOutAvgOrderByAggregateInput({this.id});
+  const CodeSendOutAvgOrderByAggregateInput({
+    this.id,
+    this.userId,
+  });
 
   factory CodeSendOutAvgOrderByAggregateInput.fromJson(
           Map<String, dynamic> json) =>
       _$CodeSendOutAvgOrderByAggregateInputFromJson(json);
 
   final SortOrder? id;
+
+  final SortOrder? userId;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -1881,7 +1976,10 @@ class CodeSendOutMinOrderByAggregateInput implements _i1.JsonSerializable {
 
 @_i1.jsonSerializable
 class CodeSendOutSumOrderByAggregateInput implements _i1.JsonSerializable {
-  const CodeSendOutSumOrderByAggregateInput({this.id});
+  const CodeSendOutSumOrderByAggregateInput({
+    this.id,
+    this.userId,
+  });
 
   factory CodeSendOutSumOrderByAggregateInput.fromJson(
           Map<String, dynamic> json) =>
@@ -1889,66 +1987,11 @@ class CodeSendOutSumOrderByAggregateInput implements _i1.JsonSerializable {
 
   final SortOrder? id;
 
+  final SortOrder? userId;
+
   @override
   Map<String, dynamic> toJson() =>
       _$CodeSendOutSumOrderByAggregateInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class IntWithAggregatesFilter implements _i1.JsonSerializable {
-  const IntWithAggregatesFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-    this.$count,
-    this.$avg,
-    this.$sum,
-    this.$min,
-    this.$max,
-  });
-
-  factory IntWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
-      _$IntWithAggregatesFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_avg')
-  final NestedFloatFilter? $avg;
-
-  @JsonKey(name: r'_sum')
-  final NestedIntFilter? $sum;
-
-  @JsonKey(name: r'_min')
-  final NestedIntFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedIntFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntWithAggregatesFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -2043,6 +2086,20 @@ class SessionCountOrderByAggregateInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class SessionAvgOrderByAggregateInput implements _i1.JsonSerializable {
+  const SessionAvgOrderByAggregateInput({this.userId});
+
+  factory SessionAvgOrderByAggregateInput.fromJson(Map<String, dynamic> json) =>
+      _$SessionAvgOrderByAggregateInputFromJson(json);
+
+  final SortOrder? userId;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$SessionAvgOrderByAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class SessionMaxOrderByAggregateInput implements _i1.JsonSerializable {
   const SessionMaxOrderByAggregateInput({
     this.id,
@@ -2090,6 +2147,20 @@ class SessionMinOrderByAggregateInput implements _i1.JsonSerializable {
   @override
   Map<String, dynamic> toJson() =>
       _$SessionMinOrderByAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class SessionSumOrderByAggregateInput implements _i1.JsonSerializable {
+  const SessionSumOrderByAggregateInput({this.userId});
+
+  factory SessionSumOrderByAggregateInput.fromJson(Map<String, dynamic> json) =>
+      _$SessionSumOrderByAggregateInputFromJson(json);
+
+  final SortOrder? userId;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$SessionSumOrderByAggregateInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -2440,6 +2511,33 @@ class CodeSendOutUpdateManyWithoutUserNestedInput
 }
 
 @_i1.jsonSerializable
+class IntFieldUpdateOperationsInput implements _i1.JsonSerializable {
+  const IntFieldUpdateOperationsInput({
+    this.set,
+    this.increment,
+    this.decrement,
+    this.multiply,
+    this.divide,
+  });
+
+  factory IntFieldUpdateOperationsInput.fromJson(Map<String, dynamic> json) =>
+      _$IntFieldUpdateOperationsInputFromJson(json);
+
+  final int? set;
+
+  final int? increment;
+
+  final int? decrement;
+
+  final int? multiply;
+
+  final int? divide;
+
+  @override
+  Map<String, dynamic> toJson() => _$IntFieldUpdateOperationsInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class SessionUncheckedUpdateManyWithoutUserNestedInput
     implements _i1.JsonSerializable {
   const SessionUncheckedUpdateManyWithoutUserNestedInput({
@@ -2584,83 +2682,56 @@ class UserUpdateOneRequiredWithoutCodeSendOutNestedInput
 }
 
 @_i1.jsonSerializable
-class IntFieldUpdateOperationsInput implements _i1.JsonSerializable {
-  const IntFieldUpdateOperationsInput({
-    this.set,
-    this.increment,
-    this.decrement,
-    this.multiply,
-    this.divide,
-  });
-
-  factory IntFieldUpdateOperationsInput.fromJson(Map<String, dynamic> json) =>
-      _$IntFieldUpdateOperationsInputFromJson(json);
-
-  final int? set;
-
-  final int? increment;
-
-  final int? decrement;
-
-  final int? multiply;
-
-  final int? divide;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntFieldUpdateOperationsInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class UserCreateNestedOneWithoutSesionInput implements _i1.JsonSerializable {
-  const UserCreateNestedOneWithoutSesionInput({
+class UserCreateNestedOneWithoutSessionInput implements _i1.JsonSerializable {
+  const UserCreateNestedOneWithoutSessionInput({
     this.create,
     this.connectOrCreate,
     this.connect,
   });
 
-  factory UserCreateNestedOneWithoutSesionInput.fromJson(
+  factory UserCreateNestedOneWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$UserCreateNestedOneWithoutSesionInputFromJson(json);
+      _$UserCreateNestedOneWithoutSessionInputFromJson(json);
 
-  final UserCreateWithoutSesionInput? create;
+  final UserCreateWithoutSessionInput? create;
 
-  final UserCreateOrConnectWithoutSesionInput? connectOrCreate;
+  final UserCreateOrConnectWithoutSessionInput? connectOrCreate;
 
   final UserWhereUniqueInput? connect;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$UserCreateNestedOneWithoutSesionInputToJson(this);
+      _$UserCreateNestedOneWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceCreateNestedOneWithoutSesionInput
+class WorkspaceCreateNestedOneWithoutSessionInput
     implements _i1.JsonSerializable {
-  const WorkspaceCreateNestedOneWithoutSesionInput({
+  const WorkspaceCreateNestedOneWithoutSessionInput({
     this.create,
     this.connectOrCreate,
     this.connect,
   });
 
-  factory WorkspaceCreateNestedOneWithoutSesionInput.fromJson(
+  factory WorkspaceCreateNestedOneWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceCreateNestedOneWithoutSesionInputFromJson(json);
+      _$WorkspaceCreateNestedOneWithoutSessionInputFromJson(json);
 
-  final WorkspaceCreateWithoutSesionInput? create;
+  final WorkspaceCreateWithoutSessionInput? create;
 
-  final WorkspaceCreateOrConnectWithoutSesionInput? connectOrCreate;
+  final WorkspaceCreateOrConnectWithoutSessionInput? connectOrCreate;
 
   final WorkspaceWhereUniqueInput? connect;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceCreateNestedOneWithoutSesionInputToJson(this);
+      _$WorkspaceCreateNestedOneWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserUpdateOneRequiredWithoutSesionNestedInput
+class UserUpdateOneRequiredWithoutSessionNestedInput
     implements _i1.JsonSerializable {
-  const UserUpdateOneRequiredWithoutSesionNestedInput({
+  const UserUpdateOneRequiredWithoutSessionNestedInput({
     this.create,
     this.connectOrCreate,
     this.upsert,
@@ -2668,29 +2739,29 @@ class UserUpdateOneRequiredWithoutSesionNestedInput
     this.update,
   });
 
-  factory UserUpdateOneRequiredWithoutSesionNestedInput.fromJson(
+  factory UserUpdateOneRequiredWithoutSessionNestedInput.fromJson(
           Map<String, dynamic> json) =>
-      _$UserUpdateOneRequiredWithoutSesionNestedInputFromJson(json);
+      _$UserUpdateOneRequiredWithoutSessionNestedInputFromJson(json);
 
-  final UserCreateWithoutSesionInput? create;
+  final UserCreateWithoutSessionInput? create;
 
-  final UserCreateOrConnectWithoutSesionInput? connectOrCreate;
+  final UserCreateOrConnectWithoutSessionInput? connectOrCreate;
 
-  final UserUpsertWithoutSesionInput? upsert;
+  final UserUpsertWithoutSessionInput? upsert;
 
   final UserWhereUniqueInput? connect;
 
-  final UserUpdateWithoutSesionInput? update;
+  final UserUpdateWithoutSessionInput? update;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$UserUpdateOneRequiredWithoutSesionNestedInputToJson(this);
+      _$UserUpdateOneRequiredWithoutSessionNestedInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceUpdateOneWithoutSesionNestedInput
+class WorkspaceUpdateOneWithoutSessionNestedInput
     implements _i1.JsonSerializable {
-  const WorkspaceUpdateOneWithoutSesionNestedInput({
+  const WorkspaceUpdateOneWithoutSessionNestedInput({
     this.create,
     this.connectOrCreate,
     this.upsert,
@@ -2700,15 +2771,15 @@ class WorkspaceUpdateOneWithoutSesionNestedInput
     this.update,
   });
 
-  factory WorkspaceUpdateOneWithoutSesionNestedInput.fromJson(
+  factory WorkspaceUpdateOneWithoutSessionNestedInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceUpdateOneWithoutSesionNestedInputFromJson(json);
+      _$WorkspaceUpdateOneWithoutSessionNestedInputFromJson(json);
 
-  final WorkspaceCreateWithoutSesionInput? create;
+  final WorkspaceCreateWithoutSessionInput? create;
 
-  final WorkspaceCreateOrConnectWithoutSesionInput? connectOrCreate;
+  final WorkspaceCreateOrConnectWithoutSessionInput? connectOrCreate;
 
-  final WorkspaceUpsertWithoutSesionInput? upsert;
+  final WorkspaceUpsertWithoutSessionInput? upsert;
 
   final bool? disconnect;
 
@@ -2716,11 +2787,11 @@ class WorkspaceUpdateOneWithoutSesionNestedInput
 
   final WorkspaceWhereUniqueInput? connect;
 
-  final WorkspaceUpdateWithoutSesionInput? update;
+  final WorkspaceUpdateWithoutSessionInput? update;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceUpdateOneWithoutSesionNestedInputToJson(this);
+      _$WorkspaceUpdateOneWithoutSessionNestedInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -2877,6 +2948,43 @@ class SessionUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 @_i1.jsonSerializable
+class NestedIntFilter implements _i1.JsonSerializable {
+  const NestedIntFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+  });
+
+  factory NestedIntFilter.fromJson(Map<String, dynamic> json) =>
+      _$NestedIntFilterFromJson(json);
+
+  final int? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<int>? $in;
+
+  final Iterable<int>? notIn;
+
+  final int? lt;
+
+  final int? lte;
+
+  final int? gt;
+
+  final int? gte;
+
+  final NestedIntFilter? not;
+
+  @override
+  Map<String, dynamic> toJson() => _$NestedIntFilterToJson(this);
+}
+
+@_i1.jsonSerializable
 class NestedStringFilter implements _i1.JsonSerializable {
   const NestedStringFilter({
     this.equals,
@@ -2978,184 +3086,6 @@ class NestedDateTimeFilter implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
-class NestedStringWithAggregatesFilter implements _i1.JsonSerializable {
-  const NestedStringWithAggregatesFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.contains,
-    this.startsWith,
-    this.endsWith,
-    this.not,
-    this.$count,
-    this.$min,
-    this.$max,
-  });
-
-  factory NestedStringWithAggregatesFilter.fromJson(
-          Map<String, dynamic> json) =>
-      _$NestedStringWithAggregatesFilterFromJson(json);
-
-  final String? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<String>? $in;
-
-  final Iterable<String>? notIn;
-
-  final String? lt;
-
-  final String? lte;
-
-  final String? gt;
-
-  final String? gte;
-
-  final String? contains;
-
-  final String? startsWith;
-
-  final String? endsWith;
-
-  final NestedStringWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_min')
-  final NestedStringFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedStringFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$NestedStringWithAggregatesFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedIntFilter implements _i1.JsonSerializable {
-  const NestedIntFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-  });
-
-  factory NestedIntFilter.fromJson(Map<String, dynamic> json) =>
-      _$NestedIntFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntFilter? not;
-
-  @override
-  Map<String, dynamic> toJson() => _$NestedIntFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedBoolWithAggregatesFilter implements _i1.JsonSerializable {
-  const NestedBoolWithAggregatesFilter({
-    this.equals,
-    this.not,
-    this.$count,
-    this.$min,
-    this.$max,
-  });
-
-  factory NestedBoolWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
-      _$NestedBoolWithAggregatesFilterFromJson(json);
-
-  final bool? equals;
-
-  final NestedBoolWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_min')
-  final NestedBoolFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedBoolFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => _$NestedBoolWithAggregatesFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedDateTimeWithAggregatesFilter implements _i1.JsonSerializable {
-  const NestedDateTimeWithAggregatesFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-    this.$count,
-    this.$min,
-    this.$max,
-  });
-
-  factory NestedDateTimeWithAggregatesFilter.fromJson(
-          Map<String, dynamic> json) =>
-      _$NestedDateTimeWithAggregatesFilterFromJson(json);
-
-  final DateTime? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<DateTime>? $in;
-
-  final Iterable<DateTime>? notIn;
-
-  final DateTime? lt;
-
-  final DateTime? lte;
-
-  final DateTime? gt;
-
-  final DateTime? gte;
-
-  final NestedDateTimeWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_min')
-  final NestedDateTimeFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedDateTimeFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$NestedDateTimeWithAggregatesFilterToJson(this);
-}
-
-@_i1.jsonSerializable
 class NestedIntWithAggregatesFilter implements _i1.JsonSerializable {
   const NestedIntWithAggregatesFilter({
     this.equals,
@@ -3247,6 +3177,147 @@ class NestedFloatFilter implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() => _$NestedFloatFilterToJson(this);
+}
+
+@_i1.jsonSerializable
+class NestedStringWithAggregatesFilter implements _i1.JsonSerializable {
+  const NestedStringWithAggregatesFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.contains,
+    this.startsWith,
+    this.endsWith,
+    this.not,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  factory NestedStringWithAggregatesFilter.fromJson(
+          Map<String, dynamic> json) =>
+      _$NestedStringWithAggregatesFilterFromJson(json);
+
+  final String? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<String>? $in;
+
+  final Iterable<String>? notIn;
+
+  final String? lt;
+
+  final String? lte;
+
+  final String? gt;
+
+  final String? gte;
+
+  final String? contains;
+
+  final String? startsWith;
+
+  final String? endsWith;
+
+  final NestedStringWithAggregatesFilter? not;
+
+  @JsonKey(name: r'_count')
+  final NestedIntFilter? $count;
+
+  @JsonKey(name: r'_min')
+  final NestedStringFilter? $min;
+
+  @JsonKey(name: r'_max')
+  final NestedStringFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$NestedStringWithAggregatesFilterToJson(this);
+}
+
+@_i1.jsonSerializable
+class NestedBoolWithAggregatesFilter implements _i1.JsonSerializable {
+  const NestedBoolWithAggregatesFilter({
+    this.equals,
+    this.not,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  factory NestedBoolWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
+      _$NestedBoolWithAggregatesFilterFromJson(json);
+
+  final bool? equals;
+
+  final NestedBoolWithAggregatesFilter? not;
+
+  @JsonKey(name: r'_count')
+  final NestedIntFilter? $count;
+
+  @JsonKey(name: r'_min')
+  final NestedBoolFilter? $min;
+
+  @JsonKey(name: r'_max')
+  final NestedBoolFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() => _$NestedBoolWithAggregatesFilterToJson(this);
+}
+
+@_i1.jsonSerializable
+class NestedDateTimeWithAggregatesFilter implements _i1.JsonSerializable {
+  const NestedDateTimeWithAggregatesFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+    this.$count,
+    this.$min,
+    this.$max,
+  });
+
+  factory NestedDateTimeWithAggregatesFilter.fromJson(
+          Map<String, dynamic> json) =>
+      _$NestedDateTimeWithAggregatesFilterFromJson(json);
+
+  final DateTime? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<DateTime>? $in;
+
+  final Iterable<DateTime>? notIn;
+
+  final DateTime? lt;
+
+  final DateTime? lte;
+
+  final DateTime? gt;
+
+  final DateTime? gte;
+
+  final NestedDateTimeWithAggregatesFilter? not;
+
+  @JsonKey(name: r'_count')
+  final NestedIntFilter? $count;
+
+  @JsonKey(name: r'_min')
+  final NestedDateTimeFilter? $min;
+
+  @JsonKey(name: r'_max')
+  final NestedDateTimeFilter? $max;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$NestedDateTimeWithAggregatesFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -3407,7 +3478,7 @@ class SessionCreateWithoutUserInput implements _i1.JsonSerializable {
 
   final DateTime? createdAt;
 
-  final WorkspaceCreateNestedOneWithoutSesionInput? workspace;
+  final WorkspaceCreateNestedOneWithoutSessionInput? workspace;
 
   @override
   Map<String, dynamic> toJson() => _$SessionCreateWithoutUserInputToJson(this);
@@ -3616,7 +3687,7 @@ class SessionScalarWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? id;
 
-  final StringFilter? userId;
+  final IntFilter? userId;
 
   final StringNullableFilter? workspaceId;
 
@@ -3720,7 +3791,7 @@ class CodeSendOutScalarWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? code;
 
-  final StringFilter? userId;
+  final IntFilter? userId;
 
   final DateTimeFilter? createdAt;
 
@@ -3731,32 +3802,29 @@ class CodeSendOutScalarWhereInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserCreateWithoutCodeSendOutInput implements _i1.JsonSerializable {
   const UserCreateWithoutCodeSendOutInput({
-    this.id,
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
   });
 
   factory UserCreateWithoutCodeSendOutInput.fromJson(
           Map<String, dynamic> json) =>
       _$UserCreateWithoutCodeSendOutInputFromJson(json);
 
-  final String? id;
-
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
   final DateTime? updatedAt;
 
-  final SessionCreateNestedManyWithoutUserInput? sesion;
+  final SessionCreateNestedManyWithoutUserInput? session;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -3770,29 +3838,29 @@ class UserUncheckedCreateWithoutCodeSendOutInput
     this.id,
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
   });
 
   factory UserUncheckedCreateWithoutCodeSendOutInput.fromJson(
           Map<String, dynamic> json) =>
       _$UserUncheckedCreateWithoutCodeSendOutInputFromJson(json);
 
-  final String? id;
+  final int? id;
 
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
   final DateTime? updatedAt;
 
-  final SessionUncheckedCreateNestedManyWithoutUserInput? sesion;
+  final SessionUncheckedCreateNestedManyWithoutUserInput? session;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -3843,32 +3911,29 @@ class UserUpsertWithoutCodeSendOutInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class UserUpdateWithoutCodeSendOutInput implements _i1.JsonSerializable {
   const UserUpdateWithoutCodeSendOutInput({
-    this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
   });
 
   factory UserUpdateWithoutCodeSendOutInput.fromJson(
           Map<String, dynamic> json) =>
       _$UserUpdateWithoutCodeSendOutInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
-
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
   final DateTimeFieldUpdateOperationsInput? updatedAt;
 
-  final SessionUpdateManyWithoutUserNestedInput? sesion;
+  final SessionUpdateManyWithoutUserNestedInput? session;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -3882,29 +3947,29 @@ class UserUncheckedUpdateWithoutCodeSendOutInput
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
-    this.sesion,
+    this.session,
   });
 
   factory UserUncheckedUpdateWithoutCodeSendOutInput.fromJson(
           Map<String, dynamic> json) =>
       _$UserUncheckedUpdateWithoutCodeSendOutInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
+  final IntFieldUpdateOperationsInput? id;
 
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
   final DateTimeFieldUpdateOperationsInput? updatedAt;
 
-  final SessionUncheckedUpdateManyWithoutUserNestedInput? sesion;
+  final SessionUncheckedUpdateManyWithoutUserNestedInput? session;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -3912,27 +3977,24 @@ class UserUncheckedUpdateWithoutCodeSendOutInput
 }
 
 @_i1.jsonSerializable
-class UserCreateWithoutSesionInput implements _i1.JsonSerializable {
-  const UserCreateWithoutSesionInput({
-    this.id,
+class UserCreateWithoutSessionInput implements _i1.JsonSerializable {
+  const UserCreateWithoutSessionInput({
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
     this.codeSendOut,
   });
 
-  factory UserCreateWithoutSesionInput.fromJson(Map<String, dynamic> json) =>
-      _$UserCreateWithoutSesionInputFromJson(json);
-
-  final String? id;
+  factory UserCreateWithoutSessionInput.fromJson(Map<String, dynamic> json) =>
+      _$UserCreateWithoutSessionInputFromJson(json);
 
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
@@ -3941,32 +4003,32 @@ class UserCreateWithoutSesionInput implements _i1.JsonSerializable {
   final CodeSendOutCreateNestedManyWithoutUserInput? codeSendOut;
 
   @override
-  Map<String, dynamic> toJson() => _$UserCreateWithoutSesionInputToJson(this);
+  Map<String, dynamic> toJson() => _$UserCreateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserUncheckedCreateWithoutSesionInput implements _i1.JsonSerializable {
-  const UserUncheckedCreateWithoutSesionInput({
+class UserUncheckedCreateWithoutSessionInput implements _i1.JsonSerializable {
+  const UserUncheckedCreateWithoutSessionInput({
     this.id,
     required this.name,
     required this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
     this.codeSendOut,
   });
 
-  factory UserUncheckedCreateWithoutSesionInput.fromJson(
+  factory UserUncheckedCreateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$UserUncheckedCreateWithoutSesionInputFromJson(json);
+      _$UserUncheckedCreateWithoutSessionInputFromJson(json);
 
-  final String? id;
+  final int? id;
 
   final String name;
 
   final String phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
@@ -3976,39 +4038,39 @@ class UserUncheckedCreateWithoutSesionInput implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() =>
-      _$UserUncheckedCreateWithoutSesionInputToJson(this);
+      _$UserUncheckedCreateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserCreateOrConnectWithoutSesionInput implements _i1.JsonSerializable {
-  const UserCreateOrConnectWithoutSesionInput({
+class UserCreateOrConnectWithoutSessionInput implements _i1.JsonSerializable {
+  const UserCreateOrConnectWithoutSessionInput({
     required this.where,
     required this.create,
   });
 
-  factory UserCreateOrConnectWithoutSesionInput.fromJson(
+  factory UserCreateOrConnectWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$UserCreateOrConnectWithoutSesionInputFromJson(json);
+      _$UserCreateOrConnectWithoutSessionInputFromJson(json);
 
   final UserWhereUniqueInput where;
 
-  final UserCreateWithoutSesionInput create;
+  final UserCreateWithoutSessionInput create;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$UserCreateOrConnectWithoutSesionInputToJson(this);
+      _$UserCreateOrConnectWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceCreateWithoutSesionInput implements _i1.JsonSerializable {
-  const WorkspaceCreateWithoutSesionInput({
+class WorkspaceCreateWithoutSessionInput implements _i1.JsonSerializable {
+  const WorkspaceCreateWithoutSessionInput({
     this.id,
     required this.name,
   });
 
-  factory WorkspaceCreateWithoutSesionInput.fromJson(
+  factory WorkspaceCreateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceCreateWithoutSesionInputFromJson(json);
+      _$WorkspaceCreateWithoutSessionInputFromJson(json);
 
   final String? id;
 
@@ -4016,20 +4078,20 @@ class WorkspaceCreateWithoutSesionInput implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceCreateWithoutSesionInputToJson(this);
+      _$WorkspaceCreateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceUncheckedCreateWithoutSesionInput
+class WorkspaceUncheckedCreateWithoutSessionInput
     implements _i1.JsonSerializable {
-  const WorkspaceUncheckedCreateWithoutSesionInput({
+  const WorkspaceUncheckedCreateWithoutSessionInput({
     this.id,
     required this.name,
   });
 
-  factory WorkspaceUncheckedCreateWithoutSesionInput.fromJson(
+  factory WorkspaceUncheckedCreateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceUncheckedCreateWithoutSesionInputFromJson(json);
+      _$WorkspaceUncheckedCreateWithoutSessionInputFromJson(json);
 
   final String? id;
 
@@ -4037,70 +4099,67 @@ class WorkspaceUncheckedCreateWithoutSesionInput
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceUncheckedCreateWithoutSesionInputToJson(this);
+      _$WorkspaceUncheckedCreateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceCreateOrConnectWithoutSesionInput
+class WorkspaceCreateOrConnectWithoutSessionInput
     implements _i1.JsonSerializable {
-  const WorkspaceCreateOrConnectWithoutSesionInput({
+  const WorkspaceCreateOrConnectWithoutSessionInput({
     required this.where,
     required this.create,
   });
 
-  factory WorkspaceCreateOrConnectWithoutSesionInput.fromJson(
+  factory WorkspaceCreateOrConnectWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceCreateOrConnectWithoutSesionInputFromJson(json);
+      _$WorkspaceCreateOrConnectWithoutSessionInputFromJson(json);
 
   final WorkspaceWhereUniqueInput where;
 
-  final WorkspaceCreateWithoutSesionInput create;
+  final WorkspaceCreateWithoutSessionInput create;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceCreateOrConnectWithoutSesionInputToJson(this);
+      _$WorkspaceCreateOrConnectWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserUpsertWithoutSesionInput implements _i1.JsonSerializable {
-  const UserUpsertWithoutSesionInput({
+class UserUpsertWithoutSessionInput implements _i1.JsonSerializable {
+  const UserUpsertWithoutSessionInput({
     required this.update,
     required this.create,
   });
 
-  factory UserUpsertWithoutSesionInput.fromJson(Map<String, dynamic> json) =>
-      _$UserUpsertWithoutSesionInputFromJson(json);
+  factory UserUpsertWithoutSessionInput.fromJson(Map<String, dynamic> json) =>
+      _$UserUpsertWithoutSessionInputFromJson(json);
 
-  final UserUpdateWithoutSesionInput update;
+  final UserUpdateWithoutSessionInput update;
 
-  final UserCreateWithoutSesionInput create;
+  final UserCreateWithoutSessionInput create;
 
   @override
-  Map<String, dynamic> toJson() => _$UserUpsertWithoutSesionInputToJson(this);
+  Map<String, dynamic> toJson() => _$UserUpsertWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserUpdateWithoutSesionInput implements _i1.JsonSerializable {
-  const UserUpdateWithoutSesionInput({
-    this.id,
+class UserUpdateWithoutSessionInput implements _i1.JsonSerializable {
+  const UserUpdateWithoutSessionInput({
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
     this.codeSendOut,
   });
 
-  factory UserUpdateWithoutSesionInput.fromJson(Map<String, dynamic> json) =>
-      _$UserUpdateWithoutSesionInputFromJson(json);
-
-  final StringFieldUpdateOperationsInput? id;
+  factory UserUpdateWithoutSessionInput.fromJson(Map<String, dynamic> json) =>
+      _$UserUpdateWithoutSessionInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -4109,32 +4168,32 @@ class UserUpdateWithoutSesionInput implements _i1.JsonSerializable {
   final CodeSendOutUpdateManyWithoutUserNestedInput? codeSendOut;
 
   @override
-  Map<String, dynamic> toJson() => _$UserUpdateWithoutSesionInputToJson(this);
+  Map<String, dynamic> toJson() => _$UserUpdateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class UserUncheckedUpdateWithoutSesionInput implements _i1.JsonSerializable {
-  const UserUncheckedUpdateWithoutSesionInput({
+class UserUncheckedUpdateWithoutSessionInput implements _i1.JsonSerializable {
+  const UserUncheckedUpdateWithoutSessionInput({
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
     this.codeSendOut,
   });
 
-  factory UserUncheckedUpdateWithoutSesionInput.fromJson(
+  factory UserUncheckedUpdateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$UserUncheckedUpdateWithoutSesionInputFromJson(json);
+      _$UserUncheckedUpdateWithoutSessionInputFromJson(json);
 
-  final StringFieldUpdateOperationsInput? id;
+  final IntFieldUpdateOperationsInput? id;
 
   final StringFieldUpdateOperationsInput? name;
 
   final StringFieldUpdateOperationsInput? phone;
 
-  final BoolFieldUpdateOperationsInput? isVerifed;
+  final BoolFieldUpdateOperationsInput? isVerified;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -4144,39 +4203,39 @@ class UserUncheckedUpdateWithoutSesionInput implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() =>
-      _$UserUncheckedUpdateWithoutSesionInputToJson(this);
+      _$UserUncheckedUpdateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceUpsertWithoutSesionInput implements _i1.JsonSerializable {
-  const WorkspaceUpsertWithoutSesionInput({
+class WorkspaceUpsertWithoutSessionInput implements _i1.JsonSerializable {
+  const WorkspaceUpsertWithoutSessionInput({
     required this.update,
     required this.create,
   });
 
-  factory WorkspaceUpsertWithoutSesionInput.fromJson(
+  factory WorkspaceUpsertWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceUpsertWithoutSesionInputFromJson(json);
+      _$WorkspaceUpsertWithoutSessionInputFromJson(json);
 
-  final WorkspaceUpdateWithoutSesionInput update;
+  final WorkspaceUpdateWithoutSessionInput update;
 
-  final WorkspaceCreateWithoutSesionInput create;
+  final WorkspaceCreateWithoutSessionInput create;
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceUpsertWithoutSesionInputToJson(this);
+      _$WorkspaceUpsertWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceUpdateWithoutSesionInput implements _i1.JsonSerializable {
-  const WorkspaceUpdateWithoutSesionInput({
+class WorkspaceUpdateWithoutSessionInput implements _i1.JsonSerializable {
+  const WorkspaceUpdateWithoutSessionInput({
     this.id,
     this.name,
   });
 
-  factory WorkspaceUpdateWithoutSesionInput.fromJson(
+  factory WorkspaceUpdateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceUpdateWithoutSesionInputFromJson(json);
+      _$WorkspaceUpdateWithoutSessionInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? id;
 
@@ -4184,20 +4243,20 @@ class WorkspaceUpdateWithoutSesionInput implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceUpdateWithoutSesionInputToJson(this);
+      _$WorkspaceUpdateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WorkspaceUncheckedUpdateWithoutSesionInput
+class WorkspaceUncheckedUpdateWithoutSessionInput
     implements _i1.JsonSerializable {
-  const WorkspaceUncheckedUpdateWithoutSesionInput({
+  const WorkspaceUncheckedUpdateWithoutSessionInput({
     this.id,
     this.name,
   });
 
-  factory WorkspaceUncheckedUpdateWithoutSesionInput.fromJson(
+  factory WorkspaceUncheckedUpdateWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WorkspaceUncheckedUpdateWithoutSesionInputFromJson(json);
+      _$WorkspaceUncheckedUpdateWithoutSessionInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? id;
 
@@ -4205,7 +4264,7 @@ class WorkspaceUncheckedUpdateWithoutSesionInput
 
   @override
   Map<String, dynamic> toJson() =>
-      _$WorkspaceUncheckedUpdateWithoutSesionInputToJson(this);
+      _$WorkspaceUncheckedUpdateWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4224,7 +4283,7 @@ class SessionCreateWithoutWorkspaceInput implements _i1.JsonSerializable {
 
   final DateTime? createdAt;
 
-  final UserCreateNestedOneWithoutSesionInput user;
+  final UserCreateNestedOneWithoutSessionInput user;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -4246,7 +4305,7 @@ class SessionUncheckedCreateWithoutWorkspaceInput
 
   final String? id;
 
-  final String userId;
+  final int userId;
 
   final DateTime? createdAt;
 
@@ -4357,7 +4416,7 @@ class SessionUpdateWithoutUserInput implements _i1.JsonSerializable {
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
-  final WorkspaceUpdateOneWithoutSesionNestedInput? workspace;
+  final WorkspaceUpdateOneWithoutSessionNestedInput? workspace;
 
   @override
   Map<String, dynamic> toJson() => _$SessionUpdateWithoutUserInputToJson(this);
@@ -4387,17 +4446,17 @@ class SessionUncheckedUpdateWithoutUserInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
-class SessionUncheckedUpdateManyWithoutSesionInput
+class SessionUncheckedUpdateManyWithoutSessionInput
     implements _i1.JsonSerializable {
-  const SessionUncheckedUpdateManyWithoutSesionInput({
+  const SessionUncheckedUpdateManyWithoutSessionInput({
     this.id,
     this.workspaceId,
     this.createdAt,
   });
 
-  factory SessionUncheckedUpdateManyWithoutSesionInput.fromJson(
+  factory SessionUncheckedUpdateManyWithoutSessionInput.fromJson(
           Map<String, dynamic> json) =>
-      _$SessionUncheckedUpdateManyWithoutSesionInputFromJson(json);
+      _$SessionUncheckedUpdateManyWithoutSessionInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? id;
 
@@ -4407,7 +4466,7 @@ class SessionUncheckedUpdateManyWithoutSesionInput
 
   @override
   Map<String, dynamic> toJson() =>
-      _$SessionUncheckedUpdateManyWithoutSesionInputToJson(this);
+      _$SessionUncheckedUpdateManyWithoutSessionInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4503,7 +4562,7 @@ class SessionUpdateWithoutWorkspaceInput implements _i1.JsonSerializable {
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
-  final UserUpdateOneRequiredWithoutSesionNestedInput? user;
+  final UserUpdateOneRequiredWithoutSessionNestedInput? user;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -4525,7 +4584,7 @@ class SessionUncheckedUpdateWithoutWorkspaceInput
 
   final StringFieldUpdateOperationsInput? id;
 
-  final StringFieldUpdateOperationsInput? userId;
+  final IntFieldUpdateOperationsInput? userId;
 
   final DateTimeFieldUpdateOperationsInput? createdAt;
 
@@ -4540,20 +4599,20 @@ class User implements _i1.JsonSerializable {
     required this.id,
     required this.name,
     required this.phone,
-    required this.isVerifed,
+    required this.isVerified,
     required this.createdAt,
     required this.updatedAt,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  final String id;
+  final int id;
 
   final String name;
 
   final String phone;
 
-  final bool isVerifed;
+  final bool isVerified;
 
   final DateTime createdAt;
 
@@ -4582,7 +4641,7 @@ class CodeSendOut implements _i1.JsonSerializable {
 
   final String code;
 
-  final String userId;
+  final int userId;
 
   final DateTime createdAt;
 
@@ -4604,7 +4663,7 @@ class Session implements _i1.JsonSerializable {
 
   final String id;
 
-  final String userId;
+  final int userId;
 
   final String? workspaceId;
 
@@ -4638,7 +4697,7 @@ class UserFluent<T> extends _i1.PrismaFluent<T> {
     super.$query,
   );
 
-  Future<Iterable<Session>?> sesion({
+  Future<Iterable<Session>?> session({
     SessionWhereInput? where,
     Iterable<SessionOrderByWithRelationInput>? orderBy,
     SessionWhereUniqueInput? cursor,
@@ -4675,16 +4734,16 @@ class UserFluent<T> extends _i1.PrismaFluent<T> {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'sesion',
+          r'session',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'sesion',
+      key: r'session',
     );
     final fields = SessionScalarFieldEnum.values.toGraphQLFields();
-    compiler(Iterable<Map> sesion) =>
-        sesion.map((Map sesion) => Session.fromJson(sesion.cast()));
+    compiler(Iterable<Map> session) =>
+        session.map((Map session) => Session.fromJson(session.cast()));
     return query(fields)
         .then((json) => json is Iterable ? compiler(json.cast()) : null);
   }
@@ -4834,7 +4893,7 @@ class WorkspaceFluent<T> extends _i1.PrismaFluent<T> {
     super.$query,
   );
 
-  Future<Iterable<Session>?> sesion({
+  Future<Iterable<Session>?> session({
     SessionWhereInput? where,
     Iterable<SessionOrderByWithRelationInput>? orderBy,
     SessionWhereUniqueInput? cursor,
@@ -4871,16 +4930,16 @@ class WorkspaceFluent<T> extends _i1.PrismaFluent<T> {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'sesion',
+          r'session',
           fields: fields,
           args: args,
         )
       ]),
-      key: r'sesion',
+      key: r'session',
     );
     final fields = SessionScalarFieldEnum.values.toGraphQLFields();
-    compiler(Iterable<Map> sesion) =>
-        sesion.map((Map sesion) => Session.fromJson(sesion.cast()));
+    compiler(Iterable<Map> session) =>
+        session.map((Map session) => Session.fromJson(session.cast()));
     return query(fields)
         .then((json) => json is Iterable ? compiler(json.cast()) : null);
   }
@@ -6898,7 +6957,7 @@ class UserGroupByOutputType implements _i1.JsonSerializable {
     this.id,
     this.name,
     this.phone,
-    this.isVerifed,
+    this.isVerified,
     this.createdAt,
     this.updatedAt,
   });
@@ -6906,13 +6965,13 @@ class UserGroupByOutputType implements _i1.JsonSerializable {
   factory UserGroupByOutputType.fromJson(Map<String, dynamic> json) =>
       _$UserGroupByOutputTypeFromJson(json);
 
-  final String? id;
+  final int? id;
 
   final String? name;
 
   final String? phone;
 
-  final bool? isVerifed;
+  final bool? isVerified;
 
   final DateTime? createdAt;
 
@@ -6941,7 +7000,7 @@ class CodeSendOutGroupByOutputType implements _i1.JsonSerializable {
 
   final String? code;
 
-  final String? userId;
+  final int? userId;
 
   final DateTime? createdAt;
 
@@ -6963,7 +7022,7 @@ class SessionGroupByOutputType implements _i1.JsonSerializable {
 
   final String? id;
 
-  final String? userId;
+  final int? userId;
 
   final String? workspaceId;
 
@@ -7020,6 +7079,32 @@ class AggregateUser {
       key: r'_count',
     );
     return UserCountAggregateOutputType(query);
+  }
+
+  UserAvgAggregateOutputType $avg() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'_avg',
+          fields: fields,
+        )
+      ]),
+      key: r'_avg',
+    );
+    return UserAvgAggregateOutputType(query);
+  }
+
+  UserSumAggregateOutputType $sum() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'_sum',
+          fields: fields,
+        )
+      ]),
+      key: r'_sum',
+    );
+    return UserSumAggregateOutputType(query);
   }
 
   UserMinAggregateOutputType $min() {
@@ -7138,6 +7223,32 @@ class AggregateSession {
     return SessionCountAggregateOutputType(query);
   }
 
+  SessionAvgAggregateOutputType $avg() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'_avg',
+          fields: fields,
+        )
+      ]),
+      key: r'_avg',
+    );
+    return SessionAvgAggregateOutputType(query);
+  }
+
+  SessionSumAggregateOutputType $sum() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'_sum',
+          fields: fields,
+        )
+      ]),
+      key: r'_sum',
+    );
+    return SessionSumAggregateOutputType(query);
+  }
+
   SessionMinAggregateOutputType $min() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
@@ -7215,15 +7326,15 @@ class UserCountOutputType {
 
   final _i1.PrismaFluentQuery $query;
 
-  Future<int> sesion() {
+  Future<int> session() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'sesion',
+          r'session',
           fields: fields,
         )
       ]),
-      key: r'sesion',
+      key: r'session',
     );
     return query(const []).then((value) => (value as int));
   }
@@ -7286,15 +7397,15 @@ class UserCountAggregateOutputType {
     return query(const []).then((value) => (value as int));
   }
 
-  Future<int> isVerifed() {
+  Future<int> isVerified() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'isVerifed',
+          r'isVerified',
           fields: fields,
         )
       ]),
-      key: r'isVerifed',
+      key: r'isVerified',
     );
     return query(const []).then((value) => (value as int));
   }
@@ -7339,12 +7450,12 @@ class UserCountAggregateOutputType {
   }
 }
 
-class UserMinAggregateOutputType {
-  const UserMinAggregateOutputType(this.$query);
+class UserAvgAggregateOutputType {
+  const UserAvgAggregateOutputType(this.$query);
 
   final _i1.PrismaFluentQuery $query;
 
-  Future<String?> id() {
+  Future<double?> id() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7354,7 +7465,45 @@ class UserMinAggregateOutputType {
       ]),
       key: r'id',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as double?));
+  }
+}
+
+class UserSumAggregateOutputType {
+  const UserSumAggregateOutputType(this.$query);
+
+  final _i1.PrismaFluentQuery $query;
+
+  Future<int?> id() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'id',
+          fields: fields,
+        )
+      ]),
+      key: r'id',
+    );
+    return query(const []).then((value) => (value as int?));
+  }
+}
+
+class UserMinAggregateOutputType {
+  const UserMinAggregateOutputType(this.$query);
+
+  final _i1.PrismaFluentQuery $query;
+
+  Future<int?> id() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'id',
+          fields: fields,
+        )
+      ]),
+      key: r'id',
+    );
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<String?> name() {
@@ -7383,15 +7532,15 @@ class UserMinAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<bool?> isVerifed() {
+  Future<bool?> isVerified() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'isVerifed',
+          r'isVerified',
           fields: fields,
         )
       ]),
-      key: r'isVerifed',
+      key: r'isVerified',
     );
     return query(const []).then((value) => (value as bool?));
   }
@@ -7430,7 +7579,7 @@ class UserMaxAggregateOutputType {
 
   final _i1.PrismaFluentQuery $query;
 
-  Future<String?> id() {
+  Future<int?> id() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7440,7 +7589,7 @@ class UserMaxAggregateOutputType {
       ]),
       key: r'id',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<String?> name() {
@@ -7469,15 +7618,15 @@ class UserMaxAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<bool?> isVerifed() {
+  Future<bool?> isVerified() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'isVerifed',
+          r'isVerified',
           fields: fields,
         )
       ]),
-      key: r'isVerifed',
+      key: r'isVerified',
     );
     return query(const []).then((value) => (value as bool?));
   }
@@ -7612,6 +7761,19 @@ class CodeSendOutAvgAggregateOutputType {
     );
     return query(const []).then((value) => (value as double?));
   }
+
+  Future<double?> userId() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'userId',
+          fields: fields,
+        )
+      ]),
+      key: r'userId',
+    );
+    return query(const []).then((value) => (value as double?));
+  }
 }
 
 class CodeSendOutSumAggregateOutputType {
@@ -7628,6 +7790,19 @@ class CodeSendOutSumAggregateOutputType {
         )
       ]),
       key: r'id',
+    );
+    return query(const []).then((value) => (value as int?));
+  }
+
+  Future<int?> userId() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'userId',
+          fields: fields,
+        )
+      ]),
+      key: r'userId',
     );
     return query(const []).then((value) => (value as int?));
   }
@@ -7677,7 +7852,7 @@ class CodeSendOutMinAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<String?> userId() {
+  Future<int?> userId() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7687,7 +7862,7 @@ class CodeSendOutMinAggregateOutputType {
       ]),
       key: r'userId',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<DateTime?> createdAt() {
@@ -7749,7 +7924,7 @@ class CodeSendOutMaxAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<String?> userId() {
+  Future<int?> userId() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7759,7 +7934,7 @@ class CodeSendOutMaxAggregateOutputType {
       ]),
       key: r'userId',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<DateTime?> createdAt() {
@@ -7848,6 +8023,44 @@ class SessionCountAggregateOutputType {
   }
 }
 
+class SessionAvgAggregateOutputType {
+  const SessionAvgAggregateOutputType(this.$query);
+
+  final _i1.PrismaFluentQuery $query;
+
+  Future<double?> userId() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'userId',
+          fields: fields,
+        )
+      ]),
+      key: r'userId',
+    );
+    return query(const []).then((value) => (value as double?));
+  }
+}
+
+class SessionSumAggregateOutputType {
+  const SessionSumAggregateOutputType(this.$query);
+
+  final _i1.PrismaFluentQuery $query;
+
+  Future<int?> userId() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'userId',
+          fields: fields,
+        )
+      ]),
+      key: r'userId',
+    );
+    return query(const []).then((value) => (value as int?));
+  }
+}
+
 class SessionMinAggregateOutputType {
   const SessionMinAggregateOutputType(this.$query);
 
@@ -7866,7 +8079,7 @@ class SessionMinAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<String?> userId() {
+  Future<int?> userId() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7876,7 +8089,7 @@ class SessionMinAggregateOutputType {
       ]),
       key: r'userId',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<String?> workspaceId() {
@@ -7925,7 +8138,7 @@ class SessionMaxAggregateOutputType {
     return query(const []).then((value) => (value as String?));
   }
 
-  Future<String?> userId() {
+  Future<int?> userId() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
@@ -7935,7 +8148,7 @@ class SessionMaxAggregateOutputType {
       ]),
       key: r'userId',
     );
-    return query(const []).then((value) => (value as String?));
+    return query(const []).then((value) => (value as int?));
   }
 
   Future<String?> workspaceId() {
@@ -7971,15 +8184,15 @@ class WorkspaceCountOutputType {
 
   final _i1.PrismaFluentQuery $query;
 
-  Future<int> sesion() {
+  Future<int> session() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
         _i2.GraphQLField(
-          r'sesion',
+          r'session',
           fields: fields,
         )
       ]),
-      key: r'sesion',
+      key: r'session',
     );
     return query(const []).then((value) => (value as int));
   }
@@ -8100,7 +8313,7 @@ class WorkspaceMaxAggregateOutputType {
   includeIfNull: false,
 )
 class Datasources implements _i1.JsonSerializable {
-  const Datasources({this.db = r'file:./auth.db'});
+  const Datasources({this.db = r'file:../../../auth.db'});
 
   final String? db;
 
@@ -8134,7 +8347,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     final engine = _i5.BinaryEngine(
       logger: logger,
       schema:
-          r'Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgp9CgpkYXRhc291cmNlIGRiIHsKICBwcm92aWRlciA9ICJzcWxpdGUiCiAgdXJsICAgICAgPSAiZmlsZTouL2F1dGguZGIiCn0KCm1vZGVsIFVzZXIgewogIGlkICAgICAgICAgIFN0cmluZyAgICAgICAgQGlkIEBkZWZhdWx0KGN1aWQoKSkKICBuYW1lICAgICAgICBTdHJpbmcKICBwaG9uZSAgICAgICBTdHJpbmcgICAgICAgIEB1bmlxdWUKICBpc1ZlcmlmZWQgICBCb29sZWFuICAgICAgIEBkZWZhdWx0KGZhbHNlKQogIGNyZWF0ZWRBdCAgIERhdGVUaW1lICAgICAgQGRlZmF1bHQobm93KCkpCiAgdXBkYXRlZEF0ICAgRGF0ZVRpbWUgICAgICBAdXBkYXRlZEF0CiAgc2VzaW9uICAgICAgU2Vzc2lvbltdCiAgY29kZVNlbmRPdXQgQ29kZVNlbmRPdXRbXQp9Cgptb2RlbCBDb2RlU2VuZE91dCB7CiAgaWQgICAgICAgIEludCAgICAgIEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgcGhvbmUgICAgIFN0cmluZwogIGNvZGUgICAgICBTdHJpbmcKICB1c2VyICAgICAgVXNlciAgICAgQHJlbGF0aW9uKGZpZWxkczogW3VzZXJJZF0sIHJlZmVyZW5jZXM6IFtpZF0pCiAgdXNlcklkICAgIFN0cmluZwogIGNyZWF0ZWRBdCBEYXRlVGltZSBAZGVmYXVsdChub3coKSkKfQoKbW9kZWwgU2Vzc2lvbiB7CiAgaWQgICAgICAgICAgU3RyaW5nICAgICBAaWQgQGRlZmF1bHQoY3VpZCgpKQogIHVzZXIgICAgICAgIFVzZXIgICAgICAgQHJlbGF0aW9uKGZpZWxkczogW3VzZXJJZF0sIHJlZmVyZW5jZXM6IFtpZF0pCiAgdXNlcklkICAgICAgU3RyaW5nCiAgd29ya3NwYWNlICAgV29ya3NwYWNlPyBAcmVsYXRpb24oZmllbGRzOiBbd29ya3NwYWNlSWRdLCByZWZlcmVuY2VzOiBbaWRdKQogIHdvcmtzcGFjZUlkIFN0cmluZz8KICBjcmVhdGVkQXQgICBEYXRlVGltZSAgIEBkZWZhdWx0KG5vdygpKQp9Cgptb2RlbCBXb3Jrc3BhY2UgewogIGlkICAgICBTdHJpbmcgICBAaWQgQGRlZmF1bHQoY3VpZCgpKQogIG5hbWUgICBTdHJpbmcKICBzZXNpb24gU2Vzc2lvbltdCn0K',
+          r'Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgp9CgpkYXRhc291cmNlIGRiIHsKICBwcm92aWRlciA9ICJzcWxpdGUiCiAgdXJsICAgICAgPSAiZmlsZTouLi8uLi8uLi9hdXRoLmRiIgp9Cgptb2RlbCBVc2VyIHsKICBpZCAgICAgICAgICBJbnQgICAgICAgIEBpZCBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgbmFtZSAgICAgICAgU3RyaW5nCiAgcGhvbmUgICAgICAgU3RyaW5nICAgICAgICBAdW5pcXVlCiAgaXNWZXJpZmllZCAgQm9vbGVhbiAgICAgICBAZGVmYXVsdChmYWxzZSkKICBjcmVhdGVkQXQgICBEYXRlVGltZSAgICAgIEBkZWZhdWx0KG5vdygpKQogIHVwZGF0ZWRBdCAgIERhdGVUaW1lICAgICAgQHVwZGF0ZWRBdAogIHNlc3Npb24gICAgIFNlc3Npb25bXQogIGNvZGVTZW5kT3V0IENvZGVTZW5kT3V0W10KfQoKbW9kZWwgQ29kZVNlbmRPdXQgewogIGlkICAgICAgICBJbnQgICAgICBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQogIHBob25lICAgICBTdHJpbmcKICBjb2RlICAgICAgU3RyaW5nCiAgdXNlciAgICAgIFVzZXIgICAgIEByZWxhdGlvbihmaWVsZHM6IFt1c2VySWRdLCByZWZlcmVuY2VzOiBbaWRdKQogIHVzZXJJZCAgICBJbnQKICBjcmVhdGVkQXQgRGF0ZVRpbWUgQGRlZmF1bHQobm93KCkpCn0KCm1vZGVsIFNlc3Npb24gewogIGlkICAgICAgICAgIFN0cmluZyAgICAgQGlkIEBkZWZhdWx0KGN1aWQoKSkKICB1c2VyICAgICAgICBVc2VyICAgICAgIEByZWxhdGlvbihmaWVsZHM6IFt1c2VySWRdLCByZWZlcmVuY2VzOiBbaWRdKQogIHVzZXJJZCAgICAgIEludAogIHdvcmtzcGFjZSAgIFdvcmtzcGFjZT8gQHJlbGF0aW9uKGZpZWxkczogW3dvcmtzcGFjZUlkXSwgcmVmZXJlbmNlczogW2lkXSkKICB3b3Jrc3BhY2VJZCBTdHJpbmc/CiAgY3JlYXRlZEF0ICAgRGF0ZVRpbWUgICBAZGVmYXVsdChub3coKSkKfQoKbW9kZWwgV29ya3NwYWNlIHsKICBpZCAgICAgU3RyaW5nICAgIEBpZCBAZGVmYXVsdChjdWlkKCkpCiAgbmFtZSAgIFN0cmluZwogIHNlc3Npb24gU2Vzc2lvbltdCn0K',
       datasources: datasources?.toJson().cast() ?? const {},
       executable:
           r'/Users/pretorean/.npm/_npx/2778af9cee32ff87/node_modules/prisma/query-engine-darwin',

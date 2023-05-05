@@ -7,17 +7,17 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./auth.db"
+  url      = "file:../../../auth.db"
 }
 
 model User {
-  id          String        @id @default(cuid())
+  id          Int        @id @default(autoincrement())
   name        String
   phone       String        @unique
-  isVerifed   Boolean       @default(false)
+  isVerified  Boolean       @default(false)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-  sesion      Session[]
+  session     Session[]
   codeSendOut CodeSendOut[]
 }
 
@@ -26,21 +26,21 @@ model CodeSendOut {
   phone     String
   code      String
   user      User     @relation(fields: [userId], references: [id])
-  userId    String
+  userId    Int
   createdAt DateTime @default(now())
 }
 
 model Session {
   id          String     @id @default(cuid())
   user        User       @relation(fields: [userId], references: [id])
-  userId      String
+  userId      Int
   workspace   Workspace? @relation(fields: [workspaceId], references: [id])
   workspaceId String?
   createdAt   DateTime   @default(now())
 }
 
 model Workspace {
-  id     String   @id @default(cuid())
+  id     String    @id @default(cuid())
   name   String
-  sesion Session[]
+  session Session[]
 }

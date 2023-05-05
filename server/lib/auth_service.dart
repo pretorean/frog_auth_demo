@@ -1,24 +1,30 @@
 import 'package:dartz/dartz.dart';
-import 'package:frog_auth_demo/auth_repository.dart';
+import 'package:frog_auth_demo/otp_service.dart';
+import 'package:frog_auth_demo/user_repository.dart';
 import 'package:models/models.dart';
 
 /// authorization logic
 class AuthService {
-  final AuthRepository repository;
+  final UserRepository userRepository;
+  final OtpService otpService;
 
-  AuthService(this.repository);
+  AuthService(this.userRepository, this.otpService);
 
   /// registration
   /// the first stage of authorization for a new user
   Future<Either<FailureModel, void>> register(RegisterRequestModel request) async {
-    if (await repository.existUserByPhone(request.phone)) {
+    if (await userRepository.existUserByPhone(request.phone)) {
       return left(FailureModel('Username or phone is already taken'));
     }
 
-    final user = await repository.createUser(request.userName, request.phone);
-    print('created user id=${user.id}, phone=${user.phone}")');
- 
-    return right(null);
+    final user = await userRepository.createUser(request.userName, request.phone);
+
+    final codeSendOut = await otpService.save(user);
+    if (otpService.sendCode(codeSendOut.phone, codeSendOut.code)) {
+      return right(null);
+    } else {
+      return left(FailureModel('An error has occurred, please try again later.'));
+    }
   }
 
   /// Login

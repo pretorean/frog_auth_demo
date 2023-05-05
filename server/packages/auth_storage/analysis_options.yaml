@@ -3,3 +3,4 @@ analyzer:
   exclude:
     - build/**
     - "**/*.g.dart"
+    - "**/prisma_client.dart"
